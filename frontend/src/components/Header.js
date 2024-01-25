@@ -2,11 +2,11 @@ import logo from '../assets/AMC Logo Transparent.png'
 
 const Header = () => {
     return (
-        <header>
+        <nav>
             <div className="logo">
                 <img src={logo} alt="logo" />
             </div>
-        </header>
+        </nav>
     )
 }
 
