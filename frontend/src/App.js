@@ -1,5 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import './index.css'
+import './styles/index.css';
+import './styles/SignUp.css';
+import './styles/SignIn.css'
 
 // Pages & Components
 import Landing from './pages/Landing';

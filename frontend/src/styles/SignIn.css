@@ -1,0 +1,37 @@
+nav {
+  background-color: #002952; /* Background color of the header */
+  padding: 0px; /* Spacing inside the header */
+  display: flex;
+}
+
+.logo img {
+  max-width: 60%;
+  height: auto
+}
+ 
+.leftPaneSignIn {
+  height: 100%;
+  background-color: #00458A;
+}
+
+.rightPaneSignIn {
+  height: 100%;
+  background-color: #CDAD5D;
+}
+
+.WelcomeBack {
+  color: #CDAD5D;
+text-align: center;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 83px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 8.3px;
+padding-top: 22px;
+}
+
+.inputBox {
+  border-radius: 50px;
+  background: #D9D9D9;
+}

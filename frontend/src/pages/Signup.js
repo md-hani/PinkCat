@@ -6,11 +6,11 @@ const Signup = () => {
         <div>
             <Header />
             <SplitPane split='vertical' minSize='68%' defaultSize='68%' maxSize='68%'>
-                <div className='leftPaneSignUp'>
+                <div className='leftPane'>
                     <div className='Welcometoamc'>Welcome To AMC</div>
-                    <input className='inputBoxSignUp' type='text'/>
+                    <input className='inputBox' type='text'/>
                 </div>
-                <div className='rightPaneSignUp'>
+                <div className='rightPane'>
 
                 </div>
             </SplitPane>
