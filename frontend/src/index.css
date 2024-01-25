@@ -24,12 +24,12 @@ nav {
 }
 
 
-.topPane {
+.leftPaneSignUp {
   height: 100%;
   background-color: #CDAD5D;
 }
 
-.bottomPane {
+.rightPaneSignUp {
   height: 100%;
   background-color: #00458A;
 }
