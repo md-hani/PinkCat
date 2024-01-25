@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import './index.css'
 
 // Pages & Components
 import Landing from './pages/Landing';

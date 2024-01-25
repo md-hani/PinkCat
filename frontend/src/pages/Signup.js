@@ -1,8 +1,8 @@
+import Header from '../components/Header'
+
 const Signup = () => {
     return (
-        <div className="signup">
-            <h2>Signup</h2>
-        </div>
+        <Header />
     )
 }
 
