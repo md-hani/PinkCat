@@ -1,0 +1,10 @@
+nav {
+    background-color: #002952; /* Background color of the header */
+    padding: 0px; /* Spacing inside the header */
+    display: flex;
+  }
+  
+  .logo img {
+    max-width: 50%;
+    height: auto
+  }

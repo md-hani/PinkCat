@@ -1,14 +1,3 @@
-nav {
-  background-color: #002952; /* Background color of the header */
-  padding: 0px; /* Spacing inside the header */
-  display: flex;
-}
-
-.logo img {
-  max-width: 60%;
-  height: auto
-}
- 
 .leftPaneSignIn {
   height: 100%;
   background-color: #00458A;
