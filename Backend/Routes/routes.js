@@ -4,13 +4,13 @@ const User = require('../Models/userModel')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.json({mssg: 'GET all workouts'})
+    res.json({message: 'Samson and Hani are the fattest'})
 })
 
-router.post('/', async (req, res) => {
-    const {username, password, token} = req.body
+router.post('/createuser', async (req, res) => {
+    const {name, email, username, password} = req.body
     try{
-        const user = await User.create({username, password, token})
+        const user = await User.signup(name, email, username, password)
         res.status(200).json(user)
     } catch(error){
         res.status(400).json({error: error.message})
