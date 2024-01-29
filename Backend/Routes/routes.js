@@ -3,8 +3,14 @@ const User = require('../Models/userModel')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json({message: 'Samson and Hani are the fattest'})
+router.post('/loginuser', async (req, res) => {
+    const {username, password} = req.body
+    try{
+        const user = await User.login(username, password)
+        res.status(200).json(user)
+    } catch(error){
+        res.status(400).json({error: error.message})
+    }
 })
 
 router.post('/createuser', async (req, res) => {

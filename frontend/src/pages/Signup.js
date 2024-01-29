@@ -39,7 +39,7 @@ const Signup = () => {
                 setPassword('')
                 setConfpass('')
                 setError(null)
-                console.log('new user created', json)
+                console.log('new user created')
             }
         }
         else{
