@@ -22,18 +22,26 @@ const Signin = () => {
         const json = await response.json()
 
         if(!response.ok)
-            {
-                setError(json.error)
-                console.log(error)
-            }
-            if(response.ok)
-            {
-                setUsername('')
-                setPassword('')
-                setError(null)
-                console.log('login successful')
-            }
+        {
+            setError(json.error)
+            console.log(error)
+        }
+        if(response.ok)
+        {
+            setUsername('')
+            setPassword('')
+            setError('Login successful!')
+            //console.log('login successful')
+        }
     }
+
+    React.useEffect(() => {
+        if(error != null)
+        {
+            alert(error)
+            setError(null)
+        }
+    }, [error])
 
     return (
         <div className='mainDivSI'>

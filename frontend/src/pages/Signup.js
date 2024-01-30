@@ -29,7 +29,7 @@ const Signup = () => {
             if(!response.ok)
             {
                 setError(json.error)
-                console.log(error)
+                //console.log(error)
             }
             if(response.ok)
             {
@@ -38,15 +38,23 @@ const Signup = () => {
                 setUsername('')
                 setPassword('')
                 setConfpass('')
-                setError(null)
-                console.log('new user created')
+                setError('New user created')
+                //console.log('new user created')
             }
         }
         else{
             setError('Password does not match')
-            console.log(error)
+            //console.log(error)
         }
     }
+
+    React.useEffect(() => {
+        if(error!=null)
+        {
+            alert(error)
+            setError(null)
+        }
+    }, [error])
 
     return (
         <div className='mainDivSU'>
