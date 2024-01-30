@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import React from 'react'
 import { Link } from "react-router-dom"
+//import Alert from "@mui/material/Alert"
 
 const Signup = () => {
     const [name, setName] = React.useState('');

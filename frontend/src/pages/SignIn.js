@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import { Link } from "react-router-dom"
 import React from 'react'
+//import Alert from "@mui/material/Alert"
 
 const Signin = () => {
     const [username, setUsername] = React.useState('');
@@ -55,6 +56,9 @@ const Signin = () => {
                         </div>
                         <div className='inputAreaSI'>
                             <label className='inputBoxLabelSI'>Password<input size={25} className='inputBoxSI' type='password' placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required/></label>                      
+                        </div>
+                        <div className='forgotPassSI'>
+                            <Link to='/signin' className='forgotPassLink'>Forgot your password?</Link>
                         </div>
                         <div className='inputAreaSI'>
                             <label className='inputBoxLabelSI'><input size={25} className='inputButtonSI' type='submit' value='LOG IN' name='submitSignup'/></label>                      
