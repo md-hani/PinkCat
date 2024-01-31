@@ -4,6 +4,8 @@ import './styles/index.css';
 import './styles/SignUp.css';
 import './styles/SignIn.css'
 import './styles/headerNav.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-toastify/dist/ReactToastify.css";
 
 // Pages & Components
 import Landing from './pages/Landing';

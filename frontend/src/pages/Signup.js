@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import React from 'react'
 import { Link } from "react-router-dom"
-//import Alert from "@mui/material/Alert"
+import { ToastContainer, toast } from 'react-toastify';
 
 const Signup = () => {
     const [name, setName] = React.useState('');
@@ -30,7 +30,6 @@ const Signup = () => {
             if(!response.ok)
             {
                 setError(json.error)
-                //console.log(error)
             }
             if(response.ok)
             {
@@ -40,19 +39,17 @@ const Signup = () => {
                 setPassword('')
                 setConfpass('')
                 setError('New user created')
-                //console.log('new user created')
             }
         }
         else{
             setError('Password does not match')
-            //console.log(error)
         }
     }
 
     React.useEffect(() => {
         if(error!=null)
         {
-            alert(error)
+            toast.error(error, {position:"bottom-left"})
             setError(null)
         }
     }, [error])
@@ -89,6 +86,7 @@ const Signup = () => {
                     <Link to='/signin'><button className='signinNav' type='button'>LOG IN</button></Link>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }
