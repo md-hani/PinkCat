@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Signin = () => {
     const [username, setUsername] = React.useState('');
@@ -11,6 +11,16 @@ const Signin = () => {
     const [error, setError] = React.useState(null);
     const [modalOpen, setModalOpen] = React.useState(false)
     const [email, setEmail] = React.useState('');
+    const [success, setSuccess] = React.useState(null)
+    const [mySuccess, setMySuccess] = React.useState(null)
+    const [flag, setFlag] = React.useState(true)
+
+    if(flag)
+    {
+        const { search } = window.location;
+        setMySuccess((new URLSearchParams(search)).get('hello'))
+        setFlag(false)
+    }
 
     const handleSubmit= async (e) => {
         e.preventDefault()
@@ -35,17 +45,29 @@ const Signin = () => {
         {
             setUsername('')
             setPassword('')
-            setError('Login successful!')
+            setSuccess('Login successful!')
         }
     }
 
     React.useEffect(() => {
+        if (mySuccess === '1')
+        {
+            toast.success("New user created", {position: "bottom-left"})
+            setMySuccess(null)
+            var myUrl = 'signin'
+            window.history.pushState({}, document.title, "/" +  myUrl);
+        }
         if(error != null)
         {
             toast.error(error, {position: "bottom-left"});
             setError(null)
         }
-    }, [error])
+        if(success != null)
+        {
+            toast.success(success, {position: "bottom-left"});
+            setSuccess(null)
+        }
+    }, [error, success, mySuccess])
 
     const handleClick = () => {
         setModalOpen(true)
@@ -59,7 +81,7 @@ const Signin = () => {
     const handleModalSubmit = () => {
         if(email != null)
         {
-            setError(`Email sent to ${email}`)
+            setSuccess(`Email sent to ${email}`)
             setEmail(null)
         }
         setModalOpen(false)
@@ -110,7 +132,6 @@ const Signin = () => {
                     <Link to='/signup'><button className='signinNavSI' type='button'>SIGN UP</button></Link>
                 </div>
             </div>
-            <ToastContainer/>
         </div>
         </>
     )

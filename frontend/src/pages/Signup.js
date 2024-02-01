@@ -1,7 +1,8 @@
 import Header from '../components/Header'
 import React from 'react'
 import { Link } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import validator from 'validator'
 
 const Signup = () => {
     const [name, setName] = React.useState('');
@@ -10,49 +11,84 @@ const Signup = () => {
     const [password, setPassword] = React.useState('');
     const [confpass, setConfpass] = React.useState('');
     const [error, setError] = React.useState(null);
+    const [success, setSuccess] = React.useState(null)
+
+    const validate = (value) => {
+        if (validator.isStrongPassword(value, {
+            minLength: 8, minLowercase: 1,
+            minUppercase: 1, minNumbers: 1, minSymbols: 1
+        })) {
+            setSuccess('Strong Password')
+            setPassword(value)
+            return true
+        } else {
+            //setError('Password requires:\nAt least 8 characters\nAt least 1 lowercase\nAt least 1 uppercase\nAt least 1 number\nAt least 1 special character')
+            toast.error(<div>
+                <p>Password requires:</p>
+                <ul>
+                    <li>At least 8 characters</li>
+                    <li>At least 1 lowercase</li>
+                    <li>At least 1 uppercase</li>
+                    <li>At least 1 number</li>
+                    <li>At least 1 special character</li>
+                </ul>
+            </div>, {position: "bottom-right"})
+            return false
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if(password === confpass)
+        if(validate(password))
         {
-            const user = {name, email, username, password}
+            if(password === confpass)
+            {
+                const user = {name, email, username, password}
 
-            const response = await fetch('/api/createuser', {
-                method: 'POST',
-                body: JSON.stringify(user),
-                headers: {
-                    'content-type': 'application/json'
+                const response = await fetch('/api/createuser', {
+                    method: 'POST',
+                    body: JSON.stringify(user),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                const json = await response.json()
+
+                if(!response.ok)
+                {
+                    setError(json.error)
                 }
-            })
-            const json = await response.json()
-
-            if(!response.ok)
-            {
-                setError(json.error)
+                if(response.ok)
+                {
+                    setName('')
+                    setEmail('')
+                    setUsername('')
+                    setPassword('')
+                    setConfpass('')
+                    setSuccess('New user created')
+                }
             }
-            if(response.ok)
+            else
             {
-                setName('')
-                setEmail('')
-                setUsername('')
-                setPassword('')
-                setConfpass('')
-                setError('New user created')
+                setError('Passwords do not match')
             }
-        }
-        else{
-            setError('Password does not match')
         }
     }
 
     React.useEffect(() => {
         if(error!=null)
         {
-            toast.error(error, {position:"bottom-left"})
+            toast.error(error, {position:"bottom-right"})
             setError(null)
         }
-    }, [error])
+        if(success!=null && success==="New user created")
+        {
+            //toast.success(success, {position:"bottom-left"})
+            setSuccess(null)
+            window.location.href='/signin?hello=1'
+        }
+    }, [error, success])
 
     return (
         <div className='mainDivSU'>
@@ -77,7 +113,7 @@ const Signup = () => {
                             <label className='inputBoxLabel'>Confirm Password<input size={25} className='inputBox' type='password' placeholder='*****' name='confPassInput' onChange={(e) => setConfpass(e.target.value)} value={confpass} required/></label>                      
                         </div>
                         <div className='inputArea'>
-                            <label className='inputBoxLabel'><input size={25} className='inputButton' type='submit' value='SIGN UP' name='submitSignup'/></label>                      
+                            <label className='inputBoxLabel'><input size={25} className='inputButton' type='submit' value='SIGN UP' name='submitSignup'/></label>
                         </div>
                     </form>
                 </div>
@@ -86,7 +122,6 @@ const Signup = () => {
                     <Link to='/signin'><button className='signinNav' type='button'>LOG IN</button></Link>
                 </div>
             </div>
-            <ToastContainer/>
         </div>
     )
 }
