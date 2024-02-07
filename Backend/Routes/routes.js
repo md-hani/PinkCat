@@ -14,9 +14,9 @@ router.post('/loginuser', async (req, res) => {
 })
 
 router.post('/createuser', async (req, res) => {
-    const {name, email, username, password} = req.body
+    const {name, email, username, password, priv} = req.body
     try{
-        const user = await User.signup(name, email, username, password)
+        const user = await User.signup(name, email, username, password, priv)
         res.status(200).json(user)
     } catch(error){
         res.status(400).json({error: error.message})
