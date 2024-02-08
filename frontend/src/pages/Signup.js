@@ -111,11 +111,11 @@ const Signup = () => {
     }
 
     const handleModalSubmit = () => {
-        setModalOpen(false)
         if(access === 'HaHwm')
         {
             setChecked(true)
             setDisabled(true)
+            setModalOpen(false)
         }
         else
         {
