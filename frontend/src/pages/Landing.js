@@ -1,15 +1,29 @@
 import React from 'react'
+import logo from '../assets/AMC Logo Transparent.png'
 import { Link } from "react-router-dom"
 
-const Landing = () => {
-    //const [data, setData] = React.useState('');
-
-
+const Landing = () => 
+{   
     return (
         <div className="landing">
-            <h2><Link to='/signup'>Signup</Link></h2>
-            <h2><Link to='/signin'>SignIn</Link></h2>
-            <h2><Link to='/meetteam'>Meet The Team</Link></h2>
+            
+                <div className="navBarLAN">
+                    <Link to='/'><img src={logo} className="logoLAN" alt='logoLAN' /></Link>
+                    {/* <div className='buttons'> */}
+                        <div><Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link></div>
+                        <div><Link to='/signin'><button className='loginLAN' type='button'>LOG IN</button></Link></div>
+                    {/* </div> */}
+                </div>
+            
+            <div className='paneDivLAN'>
+                <div className='eventsHeaderLAN'>EVENTS</div>
+                    <form className="eventsCarousel"  >EVENTS CAROUSEL
+                    </form>
+                
+                <div className='teamHeaderLAN'>MEET THE TEAM</div>
+                    <form className="teamCarousel"  >TEAM CAROUSEL
+                    </form>                   
+            </div>
         </div>
     )
 }

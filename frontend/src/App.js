@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './styles/index.css';
 import './styles/SignUp.css';
 import './styles/SignIn.css'
+import './styles/Landing.css'
 import './styles/headerNav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MeetTeam.css'
