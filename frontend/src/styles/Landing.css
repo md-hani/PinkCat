@@ -1,0 +1,146 @@
+.landing{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navBarLAN{
+  background-color: #002952; /* Background color of the header */
+  padding: 0px; /* Spacing inside the header */
+  display: flex;  
+  /* justify-content: flex-end; */
+  height:fit-content; 
+  align-items: center;
+  /* direction: rtl; */
+  /* display: flex; */
+  /* justify-content: flex-start; */
+  flex-wrap: wrap;
+  row-gap: 10px;
+  /* max-height:auto; MESS WITH THE RATIO OF NAVBAR */
+}
+
+ .logoLAN {
+  /* display: flex;
+  justify-self: flex-end; */
+  width: 262px;
+  height: auto;
+}  
+
+.signupLAN{
+  border-radius: 10px;
+    background: #00458A;
+    font-size: large;
+    font-weight: 600;
+    color: #CDAD5D;
+    padding: 5px 30px 5px 30px;
+    display: flex;
+    margin: 0px 10px 0px 800px;
+  }
+
+  .loginLAN{
+    border-radius: 10px;
+      background: #CDAD5D;
+      font-size: large;
+      font-weight: 600;
+      color: #00458A;
+      padding: 5px 30px 5px 30px;
+      display: flex;
+  }
+
+.paneDivLAN{
+  display: flex;
+  background-color: #CDAD5D;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+  
+.eventsHeaderLAN{
+  color: #00458A;
+text-align: center;
+/*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+font-size: 40px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 2px;
+padding-top: 0px;
+}
+
+.eventsCarousel{
+  padding: 100px 0px 100px 0px;
+}
+    
+.teamHeaderLAN{
+color: #00458A;
+text-align: center;
+/*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+font-size: 40px;
+font-style: normal;
+font-weight:600;
+line-height: normal;
+letter-spacing: 2px;
+padding: 0px ;
+}
+
+.teamCarousel{
+  padding: 100px 0px 0px 0px;
+}
+/*   
+.buttons{
+
+}   */
+.carousel {
+  background-color: blue;
+  --current-slide: 0;
+  /* we set position relative so absolute position works properly for the buttons */
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-button {
+  /* vertically centering the buttons */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  /* basic styling */
+  padding: 0;
+  margin: 0.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  transition: color 0.1s;
+}
+
+.carousel-button:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-button_next {
+  /* The "next slide button" will be at the right */
+  right: 0;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s;
+  transform: translateX(calc(-100% * var(--current-slide)));
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .carousel-button {
+    font-size: 2rem;
+    margin: 1rem;
+  }
+}
