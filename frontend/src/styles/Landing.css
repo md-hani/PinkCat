@@ -67,6 +67,7 @@ padding-top: 0px;
 .teamHeaderLAN{
 color: #00458A;
 text-align: center;
+text-decoration: none;
 /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 font-size: 40px;
 font-style: normal;

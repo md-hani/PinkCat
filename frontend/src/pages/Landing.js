@@ -20,7 +20,7 @@ const Landing = () =>
                     <form className="eventsCarousel"  >EVENTS CAROUSEL
                     </form>
                 
-                <div className='teamHeaderLAN'>MEET THE TEAM</div>
+                <Link to= '/meetteam ' className='teamHeaderLAN'>MEET THE TEAM</Link>
                     <form className="teamCarousel"  >TEAM CAROUSEL
                     </form>                   
             </div>
