@@ -8,43 +8,36 @@
   background-color: #002952; /* Background color of the header */
   padding: 0px; /* Spacing inside the header */
   display: flex;  
-  /* justify-content: flex-end; */
-  height:fit-content; 
+}
+
+.myButtonLAN {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   align-items: center;
-  /* direction: rtl; */
-  /* display: flex; */
-  /* justify-content: flex-start; */
-  flex-wrap: wrap;
-  row-gap: 10px;
-  /* max-height:auto; MESS WITH THE RATIO OF NAVBAR */
+  margin-right: 15px;
 }
 
  .logoLAN {
-  /* display: flex;
-  justify-self: flex-end; */
-  width: 262px;
+  max-width: 262px !important;
   height: auto;
 }  
 
 .signupLAN{
   border-radius: 10px;
-    background: #00458A;
+    background: #CDAD5D;
     font-size: large;
-    font-weight: 600;
-    color: #CDAD5D;
+    font-weight: 700;
+    color: #00458A;
     padding: 5px 30px 5px 30px;
-    display: flex;
-    margin: 0px 10px 0px 800px;
   }
 
   .loginLAN{
-    border-radius: 10px;
-      background: #CDAD5D;
       font-size: large;
-      font-weight: 600;
-      color: #00458A;
-      padding: 5px 30px 5px 30px;
-      display: flex;
+      font-weight: 700;
+      color: #CDAD5D;
+      text-decoration: none;
+      margin-right: 25px;
   }
 
 .paneDivLAN{

@@ -7,13 +7,13 @@ const Landing = () =>
     return (
         <div className="landing">
             
-                <div className="navBarLAN">
-                    <Link to='/'><img src={logo} className="logoLAN" alt='logoLAN' /></Link>
-                    {/* <div className='buttons'> */}
-                        <div><Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link></div>
-                        <div><Link to='/signin'><button className='loginLAN' type='button'>LOG IN</button></Link></div>
-                    {/* </div> */}
+            <div className="navBarLAN">
+                <Link to='/'><img src={logo} className="logoLAN" alt='logoLAN' /></Link>
+                <div className='myButtonLAN'>
+                    <Link to='/signin' className='loginLAN'>LOG IN</Link>
+                    <Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link>
                 </div>
+            </div>
             
             <div className='paneDivLAN'>
                 <div className='eventsHeaderLAN'>EVENTS</div>
