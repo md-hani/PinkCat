@@ -22,7 +22,36 @@ const Signin = () => {
         setFlag(false)
     }
 
-    const handleSubmit= async (e) => {
+    const findEmail = async () => {
+        const response = await fetch('/api/findemail', {
+            method: 'POST',
+            body: JSON.stringify({email}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        const json = await response.json()
+
+        if(!response.ok)
+        {
+            setError(json.error)
+            console.log(error)
+            return false
+        }
+        if(response.ok)
+        {
+            if(json)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const user = {username, password}
@@ -78,13 +107,17 @@ const Signin = () => {
         setEmail(null)
     }
 
-    const handleModalSubmit = () => {
-        if(email != null)
+    const handleModalSubmit = async () => {
+        if(await findEmail())
         {
             setSuccess(`Email sent to ${email}`)
             setEmail(null)
+            setModalOpen(false)
         }
-        setModalOpen(false)
+        else
+        {
+            toast.error('Email not found', {position: 'bottom-left'})
+        }
     }
 
     return (
