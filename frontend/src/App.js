@@ -5,6 +5,7 @@ import './styles/SignUp.css';
 import './styles/SignIn.css'
 import './styles/headerNav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/MeetTeam.css'
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 
@@ -12,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
+import MeetTeam from './pages/MeetTeam';
 
 function App() {
   return (
@@ -30,6 +32,10 @@ function App() {
             <Route 
               path='/signin'
               element={<SignIn />}
+            />
+            <Route 
+              path='/meetteam'
+              element={<MeetTeam />}
             />
           </Routes>
         </div>

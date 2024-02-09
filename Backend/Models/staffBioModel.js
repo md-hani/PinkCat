@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
 
 const Schema = mongoose.Schema
 
@@ -15,7 +14,6 @@ const staffBioSchema = new Schema({
     bio: {
         type: String,
         required: true,
-        unique: true
     },
     picture: {
         type: String

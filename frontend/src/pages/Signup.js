@@ -119,7 +119,6 @@ const Signup = () => {
         }
         else
         {
-            setChecked(false)
             setAccess('')
             toast.error('Invalid Access Code', {position: 'bottom-right'})
         }

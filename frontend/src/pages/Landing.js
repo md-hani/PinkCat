@@ -9,6 +9,7 @@ const Landing = () => {
         <div className="landing">
             <h2><Link to='/signup'>Signup</Link></h2>
             <h2><Link to='/signin'>SignIn</Link></h2>
+            <h2><Link to='/meetteam'>Meet The Team</Link></h2>
         </div>
     )
 }
