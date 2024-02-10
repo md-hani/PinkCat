@@ -1,0 +1,48 @@
+.mainDivMT {
+    display: flex;
+    flex-direction: column;
+}
+
+.bioDivMT {
+    display: flex;
+    flex-direction: row;
+    background-color: #CDAD5D;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+}
+
+.leftPaneMT {
+    display: flex;
+    background-color: #00458A;
+    height: 100%;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightPaneMT {
+    display: flex;
+    background-color: #CDAD5D;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    /*justify-content: center;*/
+    padding: 40px 60px 40px 60px;
+}
+
+.nameMT {
+    color: #00458A;
+}
+
+.positionMT {
+    color: #00458A;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.bioMT {
+    color: #00458A;
+    font-size: larger;
+    font-weight: 500;
+}

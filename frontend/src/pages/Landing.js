@@ -6,7 +6,7 @@ const Landing = () =>
 {   
     return (
         <div className="landing">
-            
+
             <div className="navBarLAN">
                 <Link to='/'><img src={logo} className="logoLAN" alt='logoLAN' /></Link>
                 <div className='myButtonLAN'>
@@ -14,15 +14,14 @@ const Landing = () =>
                     <Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link>
                 </div>
             </div>
-            
+
             <div className='paneDivLAN'>
                 <div className='eventsHeaderLAN'>EVENTS</div>
                     <form className="eventsCarousel"  >EVENTS CAROUSEL
                     </form>
-                
                 <Link to= '/meetteam ' className='teamHeaderLAN'>MEET THE TEAM</Link>
                     <form className="teamCarousel"  >TEAM CAROUSEL
-                    </form>                   
+                    </form>
             </div>
         </div>
     )

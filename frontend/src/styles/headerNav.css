@@ -10,5 +10,21 @@ nav {
     height: auto
   }
 
+  .headerLinks {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+  }
+
+  .meetTeamHeaderLinkNav {
+    text-decoration: none;
+    color: #CDAD5D;
+    font-weight: 700;
+    font-size: large;
+  }
+
+  .meetTeamHeaderLinkNav:hover {
+    text-decoration: underline;
+  }
 
 
