@@ -35,9 +35,8 @@ const MeetTeam = () => {
     return(
         <>
             <div className="mainDivMT">
-                {/* {isLoad &&
-                <Header></Header>} */}
-                <Header></Header>
+                {isLoad &&
+                <Header></Header>} 
                 {isLoad && bios.map(item => (
                     <div key={item._id} className='bioDivMT'>
                         <div className='leftPaneMT'>
