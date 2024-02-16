@@ -4,23 +4,15 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
+import { useLogin } from '../hooks/useLogin';
 
 const Signin = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [error, setError] = React.useState(null);
     const [modalOpen, setModalOpen] = React.useState(false)
     const [email, setEmail] = React.useState('');
     const [success, setSuccess] = React.useState(null)
-    const [mySuccess, setMySuccess] = React.useState(null)
-    const [flag, setFlag] = React.useState(true)
-
-    if(flag)
-    {
-        const { search } = window.location;
-        setMySuccess((new URLSearchParams(search)).get('hello'))
-        setFlag(false)
-    }
+    const {login, isLoading, error, setError} = useLogin()
 
     const findEmail = async () => {
         const response = await fetch('/api/findemail', {
@@ -54,38 +46,10 @@ const Signin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const user = {username, password}
-
-        const response = await fetch('/api/loginuser', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-        const json = await response.json()
-
-        if(!response.ok)
-        {
-            setError(json.error)
-            console.log(error)
-        }
-        if(response.ok)
-        {
-            setUsername('')
-            setPassword('')
-            setSuccess('Login successful!')
-        }
+        await login(username, password)
     }
 
     React.useEffect(() => {
-        if (mySuccess === '1')
-        {
-            toast.success("New user created", {position: "bottom-left"})
-            setMySuccess(null)
-            var myUrl = 'signin'
-            window.history.pushState({}, document.title, "/" +  myUrl);
-        }
         if(error != null)
         {
             toast.error(error, {position: "bottom-left"});
@@ -96,7 +60,7 @@ const Signin = () => {
             toast.success(success, {position: "bottom-left"});
             setSuccess(null)
         }
-    }, [error, success, mySuccess])
+    }, [error, success, setError])
 
     const handleClick = () => {
         setModalOpen(true)
@@ -156,7 +120,7 @@ const Signin = () => {
                             <span className='forgotPassLink' onClick={handleClick}>Forgot your password?</span>
                         </div>
                         <div className='inputAreaSI'>
-                            <label className='inputBoxLabelSI'><input size={25} className='inputButtonSI' type='submit' value='LOG IN' name='submitSignup'/></label>                      
+                            <label className='inputBoxLabelSI'><input disabled={isLoading} size={25} className='inputButtonSI' type='submit' value='LOG IN' name='submitSignup'/></label>                      
                         </div>
                     </form>
                 </div>

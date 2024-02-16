@@ -1,4 +1,7 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext';
+import { React, useState, useEffect } from 'react';
+
 
 import './styles/index.css';
 import './styles/SignUp.css';
@@ -15,8 +18,17 @@ import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import MeetTeam from './pages/MeetTeam';
+import StudentHome from './pages/StudentHome';
 
 function App() {
+  const [loading, setLoading] = useState(true)
+
+  const user = useAuthContext()
+
+  useEffect(() => {
+    setLoading(false)
+  }, [user])
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -28,15 +40,20 @@ function App() {
             />
             <Route 
               path='/signup'
-              element={<Signup />}
+              element={loading ? null : !user.user ? <Signup /> : <Navigate to='/' />}
             />
             <Route 
               path='/signin'
-              element={<SignIn />}
+              element={loading ? null : !user.user ? <SignIn /> : <Navigate to='/' />}
             />
             <Route 
               path='/meetteam'
               element={<MeetTeam />}
+            />
+            <Route 
+              path='/studenthome'
+              element={loading ? null : user.user ? <StudentHome /> : <Navigate to='/' />}
+              //element={<StudentHome />}
             />
           </Routes>
         </div>

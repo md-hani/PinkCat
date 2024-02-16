@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import validator from 'validator'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { useSignup } from '../hooks/useSignup';
 
 const Signup = () => {
     const [name, setName] = React.useState('');
@@ -14,21 +15,18 @@ const Signup = () => {
     const [access, setAccess] = React.useState('');
     const [confpass, setConfpass] = React.useState('');
     const [disabled, setDisabled] = React.useState(false);
-    const [error, setError] = React.useState(null);
-    const [success, setSuccess] = React.useState(null)
     const [checked, setChecked] = React.useState(false)
     const [modalOpen, setModalOpen] = React.useState(false)
+    const {signup, isLoading, error, setError} = useSignup()
 
     const validate = (value) => {
         if (validator.isStrongPassword(value, {
             minLength: 8, minLowercase: 1,
             minUppercase: 1, minNumbers: 1, minSymbols: 1
         })) {
-            setSuccess('Strong Password')
             setPassword(value)
             return true
         } else {
-            //setError('Password requires:\nAt least 8 characters\nAt least 1 lowercase\nAt least 1 uppercase\nAt least 1 number\nAt least 1 special character')
             toast.error(<div>
                 <p>Password requires:</p>
                 <ul>
@@ -58,31 +56,7 @@ const Signup = () => {
                     priv = "Student"
                 }
 
-                const user = {name, email, username, password, priv}
-
-                const response = await fetch('/api/createuser', {
-                    method: 'POST',
-                    body: JSON.stringify(user),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                })
-                const json = await response.json()
-
-                if(!response.ok)
-                {
-                    setError(json.error)
-                }
-                if(response.ok)
-                {
-                    setName('')
-                    setEmail('')
-                    setUsername('')
-                    setPassword('')
-                    setConfpass('')
-                    setSuccess('New user created')
-                    console.log(json)
-                }
+                await signup(name, email, username, password, priv)
             }
             else
             {
@@ -97,12 +71,7 @@ const Signup = () => {
             toast.error(error, {position:"bottom-right"})
             setError(null)
         }
-        if(success!=null && success==="New user created")
-        {
-            setSuccess(null)
-            window.location.href='/signin?hello=1'
-        }
-    }, [error, success])
+    }, [error, setError])
 
     const handleClose = () => {
         setModalOpen(false)
@@ -177,7 +146,7 @@ const Signup = () => {
                             <label className='checkboxLabel'><input size={25} className='myCheckbox' type='checkbox' checked={checked} disabled={disabled} onChange={handleCheck}/> Are you a staff member?</label>
                         </div>
                         <div className='inputArea'>
-                            <label className='inputBoxLabel'><input size={25} className='inputButton' type='submit' value='SIGN UP' name='submitSignup'/></label>
+                            <label className='inputBoxLabel'><input disabled={isLoading} size={25} className='inputButton' type='submit' value='SIGN UP' name='submitSignup'/></label>
                         </div>
                     </form>
                 </div>
