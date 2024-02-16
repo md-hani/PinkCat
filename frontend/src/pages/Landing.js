@@ -1,19 +1,13 @@
 import React from 'react'
-import logo from '../assets/AMC Logo Transparent.png'
 import { Link } from "react-router-dom"
+import Header from '../components/Header'
 
 const Landing = () => 
 {   
     return (
         <div className="landing">
 
-            <div className="navBarLAN">
-                <Link to='/'><img src={logo} className="logoLAN" alt='logoLAN' /></Link>
-                <div className='myButtonLAN'>
-                    <Link to='/signin' className='loginLAN'>LOG IN</Link>
-                    <Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link>
-                </div>
-            </div>
+            <Header></Header>
 
             <div className='paneDivLAN'>
                 <div className='eventsHeaderLAN'>EVENTS</div>

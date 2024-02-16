@@ -4,42 +4,6 @@
   height: 100vh;
 }
 
-.navBarLAN{
-  background-color: #002952; /* Background color of the header */
-  padding: 0px; /* Spacing inside the header */
-  display: flex;  
-}
-
-.myButtonLAN {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  align-items: center;
-  margin-right: 15px;
-}
-
- .logoLAN {
-  max-width: 262px !important;
-  height: auto;
-}  
-
-.signupLAN{
-  border-radius: 10px;
-    background: #CDAD5D;
-    font-size: large;
-    font-weight: 700;
-    color: #00458A;
-    padding: 5px 30px 5px 30px;
-  }
-
-  .loginLAN{
-      font-size: large;
-      font-weight: 700;
-      color: #CDAD5D;
-      text-decoration: none;
-      margin-right: 25px;
-  }
-
 .paneDivLAN{
   display: flex;
   background-color: #CDAD5D;
