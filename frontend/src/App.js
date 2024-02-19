@@ -10,6 +10,7 @@ import './styles/Landing.css'
 import './styles/headerNav.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MeetTeam.css'
+import 'swiper/swiper-bundle.css'
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 
