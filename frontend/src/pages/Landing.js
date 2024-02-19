@@ -99,7 +99,7 @@ const Landing = () =>
             <div className='swiperDiv'>
                 <Swiper
                     spaceBetween={50}
-                    slidesPerView={3}
+                    slidesPerView={4}
                     pagination={true}
                     navigation={true}
                     loop={true}
