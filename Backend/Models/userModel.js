@@ -26,6 +26,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    picture: {
+        type: String
+    },
 }, {timestamps: true})
 
 userSchema.statics.signup = async function (name, email, username, password, priv) {

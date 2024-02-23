@@ -143,7 +143,7 @@ const Signup = () => {
                             <label className='inputBoxLabel'>Confirm Password<input size={25} className='inputBox' type='password' placeholder='*****' name='confPassInput' onChange={(e) => setConfpass(e.target.value)} value={confpass} required/></label>                      
                         </div>
                         <div className='checkboxDiv'>
-                            <label className='checkboxLabel'><input size={25} className='myCheckbox' type='checkbox' checked={checked} disabled={disabled} onChange={handleCheck}/> Are you a staff member?</label>
+                            <label className='checkboxLabel'><input size={25} className='myCheckbox' type='checkbox' checked={checked} disabled={disabled} onChange={handleCheck}/> Are you an AMC staff member?</label>
                         </div>
                         <div className='inputArea'>
                             <label className='inputBoxLabel'><input disabled={isLoading} size={25} className='inputButton' type='submit' value='SIGN UP' name='submitSignup'/></label>

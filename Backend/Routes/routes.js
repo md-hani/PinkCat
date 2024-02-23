@@ -2,6 +2,17 @@ const express = require('express')
 const User = require('../Models/userModel')
 const StaffBio = require('../Models/staffBioModel')
 const jwt = require('jsonwebtoken')
+const multer = require('multer')
+//var upload = multer({ dest: "uploads/" })
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, '../frontend/src/assets');
+     },
+    filename: function (req, file, cb) {
+        cb(null , file.originalname);
+    }
+});
+const upload = multer({ storage: storage })
 
 const router = express.Router()
 
@@ -18,6 +29,34 @@ router.post('/loginuser', async (req, res) => {
 
         res.status(200).json({username, token})
     } catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/profileimage', upload.single("file"), async (req, res) => {
+    try{
+        console.log(req.file)
+        const username = (JSON.parse(JSON.stringify(req.body)).data)
+        const newPath = req.file.originalname
+
+        const filter = { username: username };
+        const update = { picture: newPath };
+
+        await User.findOneAndUpdate(filter, update);
+
+        res.status(200).json(newPath)
+    } catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/getcurrentuser', async (req, res) => {
+    const {username} = req.body
+    try{
+        const user = await User.findOne({username})
+
+        res.status(200).json(user)
+    }catch(error){
         res.status(400).json({error: error.message})
     }
 })
