@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import RoundedImage from 'react-rounded-image';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -11,6 +10,7 @@ const StudentHome = () => {
     const [isLoad, setIsLoad] = useState(false);
     const [file, setFile] = useState([]);
     const inputFile = useRef(null);
+    const [tabSelection, setTabSelection] = useState('Home')
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -64,6 +64,18 @@ const StudentHome = () => {
         }
     }
 
+    const handleCalenderTabClick = () => [
+        setTabSelection('Calendar')
+    ]
+
+    const handleInventoryTabClick = () => [
+        setTabSelection('Inventory')
+    ]
+
+    const handleAnalyticsTabClick = () => [
+        setTabSelection('Analytics')
+    ]
+
     const handleSettings = () => {
 
     }
@@ -86,18 +98,32 @@ const StudentHome = () => {
                 <div className="rightPaneStudentHome">
                     <div className="tabLinksHolder">
                         <div className="StudentHomeTabTextWrap">
-                            <Link to='/studentcalendar' className="TabTextStudentHome">CALENDAR</Link>
+                            <button onClick={handleCalenderTabClick} className="TabTextStudentHome">CALENDAR</button>
                         </div>
                         <div className="StudentHomeTabTextWrap">
-                            <Link to='/studentinventory' className="TabTextStudentHome">INVENTORY</Link>
+                            <button onClick={handleInventoryTabClick} className="TabTextStudentHome">INVENTORY</button>
                         </div>
                         {isLoad ? (currentUser.priv === 'Staff') ?
                         <div className="StudentHomeTabTextWrap">
-                            <Link to='/studentanalytics' className="TabTextStudentHome">ANALYTICS</Link>
+                            <button onClick={handleAnalyticsTabClick} className="TabTextStudentHome">ANALYTICS</button>
                         </div> : null : null}
                         <div className="settingsButtonDivStudentHome">
                             <button className="SettingsButtonStudentHome" onClick={handleSettings}><img className='settingsImgStudentHome' src={SettingsLogo} alt="settings"/></button>
                         </div>
+                    </div>
+                    <div className="TabContentHolderHome">
+                        {tabSelection === 'Home' ? 
+                            <span>Home</span> : null
+                        }
+                        {tabSelection === 'Inventory' ? 
+                            <span>Inventory</span> : null
+                        }
+                        {tabSelection === 'Analytics' ? 
+                            <span>Analytics</span> : null
+                        }
+                        {tabSelection === 'Calendar' ? 
+                            <span>Calendar</span> : null
+                        }
                     </div>
                 </div>
             </div>

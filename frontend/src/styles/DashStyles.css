@@ -45,6 +45,8 @@
     font-size: large;
     font-weight: 500;
     width: 100%;
+    border: none;
+    background-color: transparent;
 }
 
 .settingsButtonDivStudentHome {

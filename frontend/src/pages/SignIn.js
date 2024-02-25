@@ -120,7 +120,7 @@ const Signin = () => {
                             <span className='forgotPassLink' onClick={handleClick}>Forgot your password?</span>
                         </div>
                         <div className='inputAreaSI'>
-                            <label className='inputBoxLabelSI'><input disabled={isLoading} size={25} className='inputButtonSI' type='submit' value='LOG IN' name='submitSignup'/></label>                      
+                            <label className='inputBoxLabelSI'><input disabled={isLoading} size={25} className='inputButtonSI' type='submit' value='LOG IN' name='submitSignup'/></label>
                         </div>
                     </form>
                 </div>

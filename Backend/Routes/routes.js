@@ -3,7 +3,6 @@ const User = require('../Models/userModel')
 const StaffBio = require('../Models/staffBioModel')
 const jwt = require('jsonwebtoken')
 const multer = require('multer')
-//var upload = multer({ dest: "uploads/" })
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, '../frontend/src/assets');
@@ -35,7 +34,6 @@ router.post('/loginuser', async (req, res) => {
 
 router.post('/profileimage', upload.single("file"), async (req, res) => {
     try{
-        console.log(req.file)
         const username = (JSON.parse(JSON.stringify(req.body)).data)
         const newPath = req.file.originalname
 
