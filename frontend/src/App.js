@@ -10,6 +10,8 @@ import './styles/Landing.css'
 import './styles/headerNav.css'
 import './styles/StudentHome.css'
 import './styles/DashStyles.css'
+import './styles/StaffAnalytics.css'
+import './styles/StaffInventory.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MeetTeam.css'
 import 'swiper/swiper-bundle.css'

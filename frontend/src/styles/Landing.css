@@ -58,14 +58,14 @@ text-decoration: none;
 .headerSlideText {
   display: flex;
   justify-content: center;
-  color: #CDAD5D;
+  color: white;
   font-size: large;
   font-weight: 500;
 }
 
 .normalSlideText {
   display: flex;
-  color: #CDAD5D;
+  color: white;
   font-size: medium;
   font-weight: 300;
   margin-left: 5px;

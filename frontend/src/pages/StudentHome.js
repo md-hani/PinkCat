@@ -111,18 +111,38 @@ const StudentHome = () => {
                             <button className="SettingsButtonStudentHome" onClick={handleSettings}><img className='settingsImgStudentHome' src={SettingsLogo} alt="settings"/></button>
                         </div>
                     </div>
-                    <div className="TabContentHolderHome">
+                    <div className="TabContentHolder">
                         {tabSelection === 'Home' ? 
-                            <span>Home</span> : null
+                            <div className="TabContentHolderHome">
+                                <span>Home</span> 
+                            </div> : null
                         }
                         {tabSelection === 'Inventory' ? 
-                            <span>Inventory</span> : null
+                            <div className="TabContentHolderInventory">
+                                <select className="dropdownBoxInventory">
+                                    <option>Select Item</option>
+                                    {/*implement fetch and map to get options from DB*/}
+                                </select>
+                                <table className="TableDataInventory">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Available</th>
+                                            <th>Description</th>
+                                            <th>Check out<br/>(Date-time)</th>
+                                            <th>Return<br/>(Date-time)</th>
+                                        </tr>
+                                </table>
+                            </div> : null
                         }
                         {tabSelection === 'Analytics' ? 
-                            <span>Analytics</span> : null
+                            <div className="TabContentHolderAnalytics">
+                                <span>Analytics</span> 
+                            </div> : null
                         }
                         {tabSelection === 'Calendar' ? 
-                            <span>Calendar</span> : null
+                            <div className="TabContentHolderCalendar">
+                                <span>Calendar</span> 
+                            </div>: null
                         }
                     </div>
                 </div>

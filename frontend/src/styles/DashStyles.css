@@ -111,3 +111,8 @@
 input[type=file] {
     display: none;
   }
+
+.TabContentHolder {
+    width: 100%;
+    height: 100%;
+}
