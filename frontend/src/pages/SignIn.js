@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 import { useLogin } from '../hooks/useLogin';
+import eyeImage from '../assets/eye-regular.svg'
+import crossEyeImage from '../assets/eye-slash-regular.svg'
 
 const Signin = () => {
     const [username, setUsername] = React.useState('');
@@ -13,6 +15,7 @@ const Signin = () => {
     const [email, setEmail] = React.useState('');
     const [success, setSuccess] = React.useState(null)
     const {login, isLoading, error, setError} = useLogin()
+    const [eyeValue, setEyeValue] = React.useState('password')
 
     const findEmail = async () => {
         const response = await fetch('/api/findemail', {
@@ -84,6 +87,15 @@ const Signin = () => {
         }
     }
 
+    const handleEyeClick = () => {
+        if(eyeValue === 'password'){
+            setEyeValue('text')
+        }
+        else{
+            setEyeValue('password')
+        }
+    }
+
     return (
         <>
         <Modal show={modalOpen} onHide={handleClose} centered>
@@ -114,7 +126,8 @@ const Signin = () => {
                             <label className='inputBoxLabelSI'>Username<input size={25} className='inputBoxSI' type='text' placeholder='JDoe12' name='usernameInput' onChange={(e) => setUsername(e.target.value)} value={username} required/></label>                      
                         </div>
                         <div className='inputAreaSI'>
-                            <label className='inputBoxLabelSI'>Password<input size={25} className='inputBoxSI' type='password' placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required/></label>                      
+                            <label className='inputBoxLabelSI'>Password<input size={25} className='inputBoxSI' type={eyeValue} placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required /></label>
+                            <img className='SeePasswordImg' src={eyeValue === 'password' ? eyeImage : crossEyeImage} alt='See Password' onClick={handleEyeClick}/>
                         </div>
                         <div className='forgotPassSI'>
                             <span className='forgotPassLink' onClick={handleClick}>Forgot your password?</span>

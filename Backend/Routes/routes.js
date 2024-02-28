@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../Models/userModel')
 const StaffBio = require('../Models/staffBioModel')
+const Inventory = require('../Models/inventoryModel')
 const jwt = require('jsonwebtoken')
 const multer = require('multer')
 const storage = multer.diskStorage({
@@ -28,6 +29,16 @@ router.post('/loginuser', async (req, res) => {
 
         res.status(200).json({username, token})
     } catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/getTableData', async (req, res) => {
+    try{
+        const tableData = await Inventory.find()
+
+        res.status(200).json(tableData)
+    }catch(error){
         res.status(400).json({error: error.message})
     }
 })
