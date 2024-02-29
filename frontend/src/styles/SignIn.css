@@ -167,7 +167,6 @@ padding-top: 0px;
 .SeePasswordImg {
   width:5%;
   position: absolute;
-  align-self: start;
   top:42px;
   right:10px;
   cursor: pointer;

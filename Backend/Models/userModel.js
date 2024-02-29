@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const { findOneAndUpdate } = require('./staffBioModel')
 
 const Schema = mongoose.Schema
 
@@ -50,6 +51,16 @@ userSchema.statics.signup = async function (name, email, username, password, pri
     const user = await this.create({name, email, username, password: hash, priv})
 
     return user
+}
+
+userSchema.statics.resetPassword = async function(password, username) {
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password.toString(), salt)
+
+    const filter = { username: username };
+    const update = { password: hash };
+    
+    await this.findOneAndUpdate(filter, update)
 }
 
 userSchema.statics.login = async function(username, password) {

@@ -77,9 +77,21 @@ const Signin = () => {
     const handleModalSubmit = async () => {
         if(await findEmail())
         {
-            setSuccess(`Email sent to ${email}`)
-            setEmail(null)
-            setModalOpen(false)
+            const response = await fetch('/api/send', {
+                method: 'POST',
+            body: JSON.stringify({email}),
+            headers: {
+                'content-type': 'application/json'
+            }
+            })
+            const json = await response.json()
+            if(response.ok)
+            {
+                console.log(json)
+                setSuccess(`Email sent to ${email}`)
+                setEmail(null)
+                setModalOpen(false)
+            }
         }
         else
         {
@@ -91,7 +103,7 @@ const Signin = () => {
         if(eyeValue === 'password'){
             setEyeValue('text')
         }
-        else{
+        else if(eyeValue === 'text'){
             setEyeValue('password')
         }
     }
