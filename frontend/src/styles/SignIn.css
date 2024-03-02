@@ -61,6 +61,7 @@ padding-top: 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
 }
 
 .inputBoxLabelSI {
@@ -162,3 +163,13 @@ padding-top: 0px;
   align-items: flex-end;
   justify-content: left;
 }
+
+.SeePasswordImg {
+  width:5%;
+  position: absolute;
+  top:42px;
+  right:10px;
+  cursor: pointer;
+}
+
+

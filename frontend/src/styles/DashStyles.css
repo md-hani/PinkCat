@@ -41,12 +41,14 @@
 .TabTextStudentHome {
     color: black;
     text-decoration: none;
-    padding: 5px 0px 5px 5px;
+    padding: 5px 0px 5px 0px;
     font-size: large;
     font-weight: 500;
     width: 100%;
     border: none;
     background-color: transparent;
+    margin-right: 3px;
+    margin-left: 3px;
 }
 
 .settingsButtonDivStudentHome {

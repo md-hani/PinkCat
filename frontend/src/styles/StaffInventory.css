@@ -11,20 +11,27 @@
     width: 20%;
 }
 
+.tableHolderInventory {
+    height: 390px;
+    overflow-y: scroll;
+}
+
+.tableHolderInventory::-webkit-scrollbar {
+    display: none;
+  }
+
 table {
     border-collapse: collapse;
+    width: 100%;
   }
   
   table td {
     border: 1px solid black;
     text-align: center;
+    font-size: xx-large;
   }
 
   table th {
     border: 1px solid black;
-    text-align: center;
-  }
-
-  th {
     text-align: center;
   }
