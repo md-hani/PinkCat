@@ -12,11 +12,6 @@
     color: #00458A;
 }
 
-.headerServ{
-    flex-direction: row;
-    padding: 10px 10px 10px 10px;
-}
-
 .serveHeadServ {
     color: #00458A;
     display: flex;
@@ -57,7 +52,7 @@
 }
 
 .AVServ{
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px 10px 10px 10px;
 }
 
@@ -83,7 +78,7 @@
 }
 
 .researchServ{
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px 10px 10px 10px;
 }
 
