@@ -13,6 +13,7 @@ import './styles/DashStyles.css'
 import './styles/StaffAnalytics.css'
 import './styles/StaffInventory.css'
 import './styles/ResetPassword.css'
+import './styles/Services.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MeetTeam.css'
 import 'swiper/swiper-bundle.css'
@@ -26,6 +27,7 @@ import SignIn from './pages/SignIn';
 import MeetTeam from './pages/MeetTeam';
 import StudentHome from './pages/StudentHome';
 import ResetPassword from './pages/ResetPassword';
+import Services from './pages/Services';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -64,6 +66,10 @@ function App() {
             <Route 
               path='/resetPassword'
               element={<ResetPassword />}
+            />
+            <Route 
+              path='/services'
+              element={<Services />}
             />
           </Routes>
         </div>
