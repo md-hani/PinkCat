@@ -170,23 +170,37 @@ const StudentHome = () => {
                                 <div className="tableHolderInventory">
                                     <table className="TableDataInventory">
                                         <thead>
+                                            {isLoad ? (currentUser.priv === 'Staff') ?
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Available</th>
-                                                <th>Description</th>
-                                                <th>Check out<br/>(Date-time)</th>
-                                                <th>Return<br/>(Date-time)</th>
+                                                <th style={{width: '15%'}}>Name</th>
+                                                <th style={{width: '15%'}}>Available</th>
+                                                <th style={{width: '40%'}}>Description</th>
+                                                <th style={{width: '15%'}}>Check out<br/>(Date-time)</th>
+                                                <th style={{width: '15%'}}>Return<br/>(Date-time)</th>
                                             </tr>
+                                            :
+                                            <tr>
+                                                <th style={{width: '15%'}}>Name</th>
+                                                <th style={{width: '15%'}}>Available</th>
+                                                <th style={{width: '40%'}}>Description</th>
+                                            </tr>
+                                            : null}
                                         </thead>
                                         <tbody>
                                             {isTableDataLoad && tableData.map(item => (
-                                                item.itemType === selectValue ?
+                                                item.itemType === selectValue ? currentUser.priv === 'Staff' ? 
                                                 <tr key={item._id}>
                                                     <td style={{fontSize: 'larger'}}>{item.name}</td>
                                                     <td>{item.available ? <img src={checkMark} alt="Yes" /> : <img src={wrongMark} alt="No" />}</td>
                                                     <td style={{fontSize: 'larger'}}>{item.description}</td>
                                                     <td style={{fontSize: 'larger'}}>{item.checkOut}</td>
                                                     <td style={{fontSize: 'larger'}}>{item.returnDate}</td>
+                                                </tr> 
+                                                : 
+                                                <tr key={item._id}>
+                                                    <td style={{fontSize: 'larger'}}>{item.name}</td>
+                                                    <td>{item.available ? <img src={checkMark} alt="Yes" /> : <img src={wrongMark} alt="No" />}</td>
+                                                    <td style={{fontSize: 'larger'}}>{item.description}</td>
                                                 </tr> : null
                                             ))}
                                         </tbody>

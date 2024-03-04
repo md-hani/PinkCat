@@ -137,7 +137,19 @@ const Signup = () => {
                             <label className='inputBoxLabel'>Username<input size={25} className='inputBox' type='text' placeholder='Jdoe12' name='usernameInput' onChange={(e) => setUsername(e.target.value)} value={username} required/></label>                      
                         </div>
                         <div className='inputArea'>
-                            <label className='inputBoxLabel'>Password<input size={25} className='inputBox' type='password' placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required/></label>                      
+                            <label className='inputBoxLabel'>Password<input size={25} className='inputBox' type='password' placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required/></label>
+                            <div className='infoImgSignup'>
+                                <img src="https://cdn.onlinewebfonts.com/svg/img_151567.png" alt="info icon" />
+                                <span className='extraInfo'>
+                                    <ul>
+                                        <li>At least 8 characters</li>
+                                        <li>At least 1 lowercase</li>
+                                        <li>At least 1 uppercase</li>
+                                        <li>At least 1 number</li>
+                                        <li>At least 1 special character</li>
+                                    </ul>
+                                </span>
+                            </div>
                         </div>
                         <div className='inputArea'>
                             <label className='inputBoxLabel'>Confirm Password<input size={25} className='inputBox' type='password' placeholder='*****' name='confPassInput' onChange={(e) => setConfpass(e.target.value)} value={confpass} required/></label>                      

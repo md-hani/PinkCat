@@ -61,6 +61,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
   }
 
   .inputBoxLabel {
@@ -122,4 +123,26 @@
     font-weight: 600;
     color: #00458A;
     padding: 5px 60px 5px 60px;
+}
+
+.extraInfo {
+  position: absolute;
+  color: #000;
+  background-color: #D9D9D9;
+  border-radius: 5px;
+  padding-top: 10px;
+  width: 70%;
+  left: -250px;
+  visibility: hidden;
+}
+
+.infoImgSignup img {
+  width: 15px;
+  position: absolute;
+  top: 8px;
+  left: 96px;
+}
+
+.infoImgSignup:hover .extraInfo{
+  visibility: visible;
 }
