@@ -1,0 +1,104 @@
+.mainDivServ {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    /* flex-direction: row; */
+    background-color: #CDAD5D;
+    height: 100%;
+    width: 100%;
+}
+
+*{
+    color: #00458A;
+}
+
+.serveHeadServ {
+    color: #00458A;
+    display: flex;
+    padding: 10px 10px 0px 10px;
+}
+
+.headerDescrptServ{
+    display:flex;
+    font-size: larger;
+    font-weight: 500;
+    padding: 10px 10px 10px 30px;
+}
+
+.eqpmtServ{
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+}
+
+.dslrServ {
+    display:flex;
+    padding: 10px 10px 10px 10px;
+    width: 25% ;
+    height: auto ;
+}
+
+.eqpmtHeadServ {
+    display:flex;
+    margin-bottom: 30px;
+    font-style: bold;
+    padding: 10px 10px 10px 10px;
+}
+
+.eqpmtDscrptServ {
+    display:flex;
+    font-size: larger;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+}
+
+.AVServ{
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+}
+
+.lBoardServ {
+    display:flex;
+    width: 25% ;
+    height: auto ;
+    padding: 10px 10px 10px 10px;
+}
+
+.AVHeadServ {
+    display:flex;
+    margin-bottom: 30px;
+    font-style: bold;
+    padding: 10px 10px 10px 10px;
+}
+
+.AVDscrptServ {
+    display:flex;
+    font-size: larger;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+}
+
+.researchServ{
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+}
+
+.posterServ {
+    display:flex;
+    width: 25% ;
+    height: auto ;
+    padding: 10px 10px 10px 10px;
+}
+
+.researchHeadServ {
+    display:flex;
+    margin-bottom: 30px;
+    font-style: bold;
+    padding: 10px 10px 10px 10px;
+}
+
+.researchDscrptServ {
+    display:flex;
+    font-size: larger;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+}
