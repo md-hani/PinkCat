@@ -14,6 +14,7 @@ import './styles/StaffAnalytics.css'
 import './styles/StaffInventory.css'
 import './styles/ResetPassword.css'
 import './styles/Services.css'
+import './styles/CalendarTab.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MeetTeam.css'
 import 'swiper/swiper-bundle.css'

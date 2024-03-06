@@ -7,6 +7,9 @@ import editImage from '../assets/editImage.png'
 import checkMark from '../assets/checkmark.png'
 import wrongMark from '../assets/wrongMark.png'
 import _ from 'lodash'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
 
 const StudentHome = () => {
     const [currentUser, setCurrentUser] = useState('');
@@ -20,6 +23,8 @@ const StudentHome = () => {
     const [backgroundColorCalendar, setBackgroundColorCalendar] = useState('')
     const [backgroundColorAnalytics, setBackgroundColorAnalytics] = useState('')
     const [backgroundColorInventory, setBackgroundColorInventory] = useState('')
+    const [backgroundColorHome, setBackgroundColorHome] = useState('#a3a395')
+
 
     const fetchTableData= async () => {
         const response = await fetch('/api/getTableData', {
@@ -91,15 +96,25 @@ const StudentHome = () => {
         }
     }
 
+    const handleHomeTabClick = (e) => {
+        setTabSelection('Home')
+        setBackgroundColorHome('#a3a395')
+        setBackgroundColorCalendar('')
+        setBackgroundColorAnalytics('')
+        setBackgroundColorInventory('')
+    }
+
     const handleCalenderTabClick = (e) => {
         setTabSelection('Calendar')
         setBackgroundColorCalendar('#a3a395')
         setBackgroundColorAnalytics('')
         setBackgroundColorInventory('')
+        setBackgroundColorHome('')
     }
 
     const handleInventoryTabClick = () => {
         setTabSelection('Inventory')
+        setBackgroundColorHome('')
         setBackgroundColorCalendar('')
         setBackgroundColorAnalytics('')
         setBackgroundColorInventory('#a3a395')
@@ -107,6 +122,7 @@ const StudentHome = () => {
 
     const handleAnalyticsTabClick = () => {
         setTabSelection('Analytics')
+        setBackgroundColorHome('')
         setBackgroundColorCalendar('')
         setBackgroundColorAnalytics('#a3a395')
         setBackgroundColorInventory('')
@@ -139,6 +155,9 @@ const StudentHome = () => {
                 </div>
                 <div className="rightPaneStudentHome">
                     <div className="tabLinksHolder">
+                    <div className="StudentHomeTabTextWrap">
+                            <button onClick={handleHomeTabClick} className="TabTextStudentHome" style={{backgroundColor: backgroundColorHome}}>HOME</button>
+                        </div>
                         <div className="StudentHomeTabTextWrap">
                             <button onClick={handleCalenderTabClick} className="TabTextStudentHome" style={{backgroundColor: backgroundColorCalendar}}>CALENDAR</button>
                         </div>
@@ -215,8 +234,15 @@ const StudentHome = () => {
                         }
                         {tabSelection === 'Calendar' ? 
                             <div className="TabContentHolderCalendar">
-                                <span>Calendar</span> 
-                            </div>: null
+                                <div className="ActualCalendarDisplay">
+                                    <FullCalendar
+                                        plugins={[ dayGridPlugin, timeGridPlugin ]}
+                                        initialView="dayGridMonth"
+                                        height={'100%'}
+                                    />
+                                </div>
+                            </div>
+                            : null
                         }
                     </div>
                 </div>
