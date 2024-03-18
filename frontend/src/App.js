@@ -26,9 +26,13 @@ import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import MeetTeam from './pages/MeetTeam';
-import StudentHome from './pages/StudentHome';
+import Home from './pages/Home';
 import ResetPassword from './pages/ResetPassword';
 import Services from './pages/Services';
+import Calendar from './pages/Calendar';
+import Inventory from './pages/Inventory';
+import Analytics from './pages/Analytics';
+import Settings from './pages/Settings';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -61,8 +65,8 @@ function App() {
               element={<MeetTeam />}
             />
             <Route 
-              path='/studenthome'
-              element={loading ? null : user.user ? <StudentHome /> : <Navigate to='/' />}
+              path='/home'
+              element={loading ? null : user.user ? <Home /> : <Navigate to='/' />}
             />
             <Route 
               path='/resetPassword'
@@ -71,6 +75,22 @@ function App() {
             <Route 
               path='/services'
               element={<Services />}
+            />
+            <Route 
+              path='/calendar'
+              element={loading ? null : user.user ? <Calendar /> : <Navigate to='/' />}
+            />
+            <Route 
+              path='/inventory'
+              element={loading ? null : user.user ? <Inventory /> : <Navigate to='/' />}
+            />
+            <Route 
+              path='/analytics'
+              element={loading ? null : user.user ? <Analytics /> : <Navigate to='/' />}
+            />
+            <Route 
+              path='/settings'
+              element={loading ? null : user.user ? <Settings /> : <Navigate to='/' />}
             />
           </Routes>
         </div>

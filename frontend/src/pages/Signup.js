@@ -122,7 +122,7 @@ const Signup = () => {
             </Modal.Footer>
         </Modal>
         <div className='mainDivSU'>
-            <Header className='headerSU' />
+            <Header atDashboard={false} className='headerSU' />
             <div className='paneDiv'>
                 <div className='leftPane'>
                     <div className='Welcometoamc'>Welcome To AMC</div>

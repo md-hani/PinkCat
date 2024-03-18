@@ -129,7 +129,7 @@ const Signin = () => {
             </Modal.Footer>
         </Modal>
         <div className='mainDivSI'>
-            <Header className='headerSU' />
+            <Header atDashboard={false} className='headerSU' />
             <div className='paneDivSI'>
                 <div className='leftPaneSI'>
                     <div className='Welcomeback'>Welcome Back</div>

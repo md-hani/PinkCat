@@ -38,8 +38,10 @@ const Landing = () =>
     }
 
     return (
+        <>
+        {isLoad && 
         <div className="landing">
-            <Header></Header>
+            <Header atDashboard={false}></Header>
             <span className='eventsTextLAN'>EVENTS</span>
             <div className='swiperDiv'>
                 <Swiper
@@ -116,7 +118,8 @@ const Landing = () =>
                     ))}
                 </Swiper>
             </div>
-        </div>
+        </div>}
+        </>
     )
 }
 

@@ -84,4 +84,36 @@ nav {
     margin-right: 25px;
   }
 
+  .showUsernameNAV:hover .dropdownHeaderSelect{
+    visibility: visible;
+  }
+
+  .dropdownHeaderSelect {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    top: 100px;
+    right: 2px;
+    padding: 20px 10px 10px 0px;
+    z-index: 9999;
+    visibility: hidden;
+  }
+
+  .ProfilePicDropdownList {
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+
+  .HeaderDropdownProfilePicButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+  }
+
+  .settingsIconStyle {
+    padding: 5px;
+  }
+
 

@@ -1,9 +1,41 @@
+.calendarPageHolder {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+}
+
 .TabContentHolderCalendar {
     height: 100%;
     width: 100%;
+    display: flex;
+}
+
+.CalendarLeftPane {
+    height: 100%;
+    width: 20%;
 }
 
 .ActualCalendarDisplay {
     height: 100%;
     width: 100%;
+}
+
+/* .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    min-height: 0em;
+    position: relative;
+} */
+
+.ActualCalendarDisplay::-webkit-scrollbar {
+    display: none;
+}
+
+a.fc-col-header-cell-cushion {
+    color: black;
+    text-decoration: none;
+}
+
+a.fc-daygrid-day-number {
+    color: black;
+    text-decoration: none;
 }

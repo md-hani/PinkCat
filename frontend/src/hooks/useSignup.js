@@ -30,7 +30,7 @@ export const useSignup = () => {
 
             setIsLoading(false)
 
-            window.location.href='/studenthome'
+            window.location.href='/home'
         }
     }
 

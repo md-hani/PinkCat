@@ -25,13 +25,10 @@ const Services = () => {
     }, [])
 
     return(
+        <>
             <div className="mainDivServ">
-                <Header></Header>
-                {/* {isLoad && bios.map(item => (
-                    <div key={item._id} id={item.name} className='bioDivServ'> 
-                        <div className='leftPaneServ'>
-                            <RoundedImage imageWidth='270' imageHeight='330' roundedColor='#CDAD5D' roundedSize='15' image={getImage(item)} />
-                        </div> */}
+                {isLoad && 
+                <Header atDashboard={false}></Header>}
                         <h1 className='serveHeadServ'>Our Services</h1>
                         <span className='headerDescrptServ'>The Academic Media Center is focused on helping students, faculty and staff with the design, 
                                                             development and production of multimedia in support of the curriculum and St. Mary's University's 
@@ -77,9 +74,8 @@ const Services = () => {
                                                                     direct line: 210-436-3503. maybe carousel, LIvestream</span>
                             </div>
                         </div>
-                     {/*   </div>
-                ))} */}
             </div>
+        </>
     )
 }
 
