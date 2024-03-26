@@ -20,10 +20,10 @@ const inventorySchema = new Schema({
         required: true,
     },
     checkOut: {
-        type: Date
+        type: String
     },
     returnTime: {
-        type: Date
+        type: String
     },
 }, {timestamps: true})
 

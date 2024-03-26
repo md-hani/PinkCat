@@ -4,6 +4,7 @@ const StaffBio = require('../Models/staffBioModel')
 const Inventory = require('../Models/inventoryModel')
 const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer");
+const xlsx = require('xlsx')
 const multer = require('multer')
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -46,6 +47,103 @@ const transporter = nodemailer.createTransport({
     });
   });
 
+// router.post('/readExcel', async (req, res) => {
+//     const data = xlsx.readFile('../frontend/src/assets/InventorySample.xlsx');
+
+//     const worksheet = data.Sheets['Sheet1']
+//     const rows = xlsx.utils.sheet_to_json(worksheet)
+
+//     for (let i = 0; i < rows.length; i++)
+//     {
+//         const {itemType, name, description} = rows[i]
+//         const available = true
+//         const checkOut = '-'
+//         const returnTime = '-'
+//         await Inventory.create({itemType, name, available, description, checkOut, returnTime})
+//     }
+
+//     res.status(200).json("Good")
+
+// })
+
+router.post('/setNameInventory', async (req, res) => {
+    const {nameEditKey, nameEdit} = req.body
+    try{
+        const filter = { _id: nameEditKey };
+        const update = { name: nameEdit };
+
+        const item = await Inventory.findOneAndUpdate(filter, update);
+
+        res.status(200).json(item)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/setDescriptionInventory', async (req, res) => {
+    const {descriptionEditKey, descriptionEdit} = req.body
+    try{
+        const filter = { _id: descriptionEditKey };
+        const update = { description: descriptionEdit };
+
+        const item = await Inventory.findOneAndUpdate(filter, update);
+
+        res.status(200).json(item)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/setAvailableInventory', async (req, res) => {
+    const {availableEditKey, availableEdit} = req.body
+    try{
+        var isAvailable = ''
+        if(availableEdit === 'true')
+        {
+            isAvailable = true
+        }
+        else{
+            isAvailable = false
+        }
+        const filter = { _id: availableEditKey };
+        const update = { available: isAvailable };
+
+        const item = await Inventory.findOneAndUpdate(filter, update);
+
+        res.status(200).json(item)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/setCheckoutInventory', async (req, res) => {
+    const {checkoutEditKey, myDate} = req.body
+    try{
+        const filter = { _id: checkoutEditKey };
+        const update = { checkOut: myDate };
+
+        const item = await Inventory.findOneAndUpdate(filter, update);
+
+        res.status(200).json(item)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/setReturnInventory', async (req, res) => {
+    const {returnEditKey, myDate} = req.body
+    try{
+        const filter = { _id: returnEditKey };
+        const update = { returnTime: myDate };
+
+        const item = await Inventory.findOneAndUpdate(filter, update);
+
+        res.status(200).json(item)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
 router.post('/loginuser', async (req, res) => {
     const {username, password} = req.body
     try{
@@ -65,6 +163,18 @@ router.post('/resetPasswordPoint', async (req, res) => {
         await User.resetPassword(newPassword, username)
 
         res.status(200).json("Successful password reset")
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/createInventoryItem', async (req, res) => {
+    const {itemType, name, description} = req.body
+    const available = true
+    try{
+        await Inventory.create({itemType, name, available, description})
+
+        res.status(200).json("Successful Inventory Addition")
     }catch(error){
         res.status(400).json({error: error.message})
     }

@@ -20,6 +20,43 @@
     display: none;
   }
 
+  .editImageInventory{
+    width: 100%;
+    top: 0px;
+    right:2px;
+    position: absolute;
+  }
+  
+  .InventoryEditButton{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0px;
+    width: 18px;
+    justify-content: center;
+    visibility: hidden;
+  }
+
+  .divWrapInventoryData:hover .InventoryEditButton{
+    visibility: visible;
+  }
+
+  .AvailableEditModalText {
+    font-size: larger;
+    padding: 5px;
+    font-weight: 500;
+  }
+
+  .css-82ttqm-MuiTimeClock-root {
+    overflow: scroll !important;
+  }
+
+  .css-1rtg91x-MuiDateCalendar-root {
+    overflow: scroll !important;
+  }
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -29,6 +66,7 @@ table {
     border: 1px solid black;
     text-align: center;
     font-size: xx-large;
+    position: relative;
   }
 
   table th {
