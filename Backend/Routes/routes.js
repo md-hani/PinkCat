@@ -2,6 +2,7 @@ const express = require('express')
 const User = require('../Models/userModel')
 const StaffBio = require('../Models/staffBioModel')
 const Inventory = require('../Models/inventoryModel')
+const Calendar = require('../Models/calendarModel')
 const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer");
 const xlsx = require('xlsx')
@@ -26,7 +27,7 @@ const transporter = nodemailer.createTransport({
     service: "Gmail", 
     auth: {
       user: "noreply.amcstmu@gmail.com",
-      pass: "cxinthwnpcfmkczh"
+      pass: 'cxinthwnpcfmkczh'
     }
   });
   router.post("/send", async (req, res) => {
@@ -47,6 +48,16 @@ const transporter = nodemailer.createTransport({
     });
   });
 
+  router.post("/createEvent",async (req, res) => {
+    try{
+        const item = await Calendar.updateOne({_id: '6605ae3b092f93d119c6228d'}, {$push: {events: {title: 'Event 1', start: '2024-03-18T18:30', end: '2024-03-18T20:30'}}})
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+  })
+
 // router.post('/readExcel', async (req, res) => {
 //     const data = xlsx.readFile('../frontend/src/assets/InventorySample.xlsx');
 
@@ -65,6 +76,37 @@ const transporter = nodemailer.createTransport({
 //     res.status(200).json("Good")
 
 // })
+
+router.post('/createNewCalendar', async (req, res) => {
+    const {nameEdit, currentUsername} = req.body
+    try{
+        const item = await Calendar.create({name: nameEdit})
+
+        await User.findOneAndUpdate({username: currentUsername}, {$push: {calendars: item._id}})
+
+        res.status(200).json("ok")
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/getUserCalendars', async (req, res) => {
+    const {calendars} = req.body
+    try{
+        var calArray = []
+
+        for(let i = 0; i < calendars.length; i++)
+        {
+            const filter = {_id: calendars[i]}
+            const item = await Calendar.findOne(filter)
+            calArray.push(item)
+        }
+        console.log(calArray)
+        res.status(200).json(calArray)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
 
 router.post('/setNameInventory', async (req, res) => {
     const {nameEditKey, nameEdit} = req.body

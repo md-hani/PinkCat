@@ -40,7 +40,7 @@ const MeetTeam = () => {
                 {isLoad && bios.map(item => (
                     <div key={item._id} id={item.name} className='bioDivMT'>
                         <div className='leftPaneMT'>
-                            <RoundedImage imageWidth='270' imageHeight='330' roundedColor='#CDAD5D' roundedSize='15' image={getImage(item)} />
+                            <RoundedImage imageWidth='270' imageHeight='330' roundedColor='#CDAD5D' roundedSize='0' image={getImage(item)} />
                         </div>
                         <div className='rightPaneMT'>
                             <h1 className='nameMT'>{item.name}</h1>

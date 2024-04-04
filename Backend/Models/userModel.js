@@ -30,7 +30,17 @@ const userSchema = new Schema({
     picture: {
         type: String
     },
+    calendars: {
+        type: Array
+    },
 }, {timestamps: true})
+
+userSchema.pre('save', function(next) {
+    if(this.priv === 'Staff'){
+        this.calendars.push('6605ae3b092f93d119c6228d')
+    }
+    next();
+  });
 
 userSchema.statics.signup = async function (name, email, username, password, priv) {
     const usernameExists = await this.findOne({username})
