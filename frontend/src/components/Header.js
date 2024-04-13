@@ -73,7 +73,6 @@ const Header = (props) => {
                             <a className='meetTeamHeaderLinkNav' href='/analytics'>ANALYTICS</a> : null
                         }
                     </div>
-                    <a className='meetTeamHeaderLinkNav' href='/settings'>SETTINGS</a>
                 </div> :
                 <div className='headerLinks'>
                     <a className='meetTeamHeaderLinkNav' href='/meetteam'>MEET THE TEAM</a>
@@ -86,9 +85,11 @@ const Header = (props) => {
                     <Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link>
                 </div> :
                 <div className='showUsernameNAV'>
-                    <div className='testRel'>
-                        <RoundedImage imageWidth='65' imageHeight='65' roundedColor='#CDAD5D' roundedSize='7' image={getImage()}/>
-                    </div>
+                    <Link to='/'>
+                        <div className='testRel'>
+                            <RoundedImage imageWidth='65' imageHeight='65' roundedColor='#CDAD5D' roundedSize='7' image={getImage()}/>
+                        </div>
+                    </Link>
                     <div className='dropdownHeaderSelect'>
                         <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleProfileSettingsClick}><img className='settingsIconStyle' src={settingsIcon} alt='Settings'/>Profile settings</button></li>
                         <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleLogOut}><img className='settingsIconStyle' src={logoutIcon} alt='Log out'/>Log out</button></li>

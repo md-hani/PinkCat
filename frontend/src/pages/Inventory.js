@@ -36,7 +36,7 @@ const Inventory = () => {
     const [returnDateValue, setReturnDateValue] = useState(null);
     const [isTableDataLoad, SetIsTableDataLoad] = useState(false)
     const [tableData, SetTableData] = useState([])
-    const [selectValue, SetSelectValue] = useState('')
+    const [selectValue, SetSelectValue] = useState(localStorage.getItem("selectedItem") == null ? "All items" : localStorage.getItem("selectedItem"));
 
     const fetchTableData= async () => {
         const response = await fetch('/api/getTableData', {
@@ -76,7 +76,9 @@ const Inventory = () => {
     }, [user])
 
     const HandleSelectChange = (e) => {
-        SetSelectValue(e.target.value)
+
+            localStorage.setItem("selectedItem", e.target.value)
+            SetSelectValue(localStorage.getItem("selectedItem"))
     }
 
     const handleNameEdit = (e) => {
@@ -454,8 +456,8 @@ const Inventory = () => {
             <div>
                 <Header atDashboard={true} isStaff={currentUser.priv}></Header>
                 <div className="TabContentHolderInventory">
-                    <select className="dropdownBoxInventory" onChange={HandleSelectChange}>
-                        <option defaultValue >All items</option>
+                    <select className="dropdownBoxInventory" onChange={HandleSelectChange} value={selectValue}>
+                        <option >All items</option>
                         {isTableDataLoad && _.uniqBy(tableData, 'itemType').map(item => (
                             <option key={item._id} value={item.itemType}>{item.itemType}</option>
                         ))}

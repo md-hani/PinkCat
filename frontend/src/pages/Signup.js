@@ -6,6 +6,7 @@ import validator from 'validator'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useSignup } from '../hooks/useSignup';
+import infoIcon from '../assets/infoIcon1.png'
 
 const Signup = () => {
     const [name, setName] = React.useState('');
@@ -139,7 +140,7 @@ const Signup = () => {
                         <div className='inputArea'>
                             <label className='inputBoxLabel'>Password<input size={25} className='inputBox' type='password' placeholder='*****' name='passwordInput' onChange={(e) => setPassword(e.target.value)} value={password} required/></label>
                             <div className='infoImgSignup'>
-                                <img src="https://cdn.onlinewebfonts.com/svg/img_151567.png" alt="info icon" />
+                                <img src={infoIcon} alt="info icon" />
                                 <span className='extraInfo'>
                                     <ul>
                                         <li>At least 8 characters</li>

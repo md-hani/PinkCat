@@ -32,7 +32,6 @@ import Services from './pages/Services';
 import Calendar from './pages/Calendar';
 import Inventory from './pages/Inventory';
 import Analytics from './pages/Analytics';
-import Settings from './pages/Settings';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -87,10 +86,6 @@ function App() {
             <Route 
               path='/analytics'
               element={loading ? null : user.user ? <Analytics /> : <Navigate to='/' />}
-            />
-            <Route 
-              path='/settings'
-              element={loading ? null : user.user ? <Settings /> : <Navigate to='/' />}
             />
           </Routes>
         </div>

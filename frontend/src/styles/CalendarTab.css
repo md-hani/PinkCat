@@ -94,3 +94,22 @@ a.fc-daygrid-day-number {
 .fc-v-event .fc-event-title {
     font-size: medium;
 }
+
+.fc-scroller::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  .fc-scroller::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  
+    .fc-scroller::-webkit-scrollbar-thumb {
+      background-color: #d6dee1;
+      border-radius: 20px;
+      border: 6px solid transparent;
+      background-clip: content-box;
+    }
+  
+    .fc-scroller::-webkit-scrollbar-thumb:hover {
+      background-color: #a8bbbf;
+    }

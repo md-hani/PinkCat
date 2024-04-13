@@ -122,6 +122,30 @@ router.post('/setNameInventory', async (req, res) => {
     }
 })
 
+router.post('/deleteMyCalendar', async (req, res) =>{
+    const {myId, myUser}= req.body
+    try{
+        const item = await Calendar.findOne({_id: myId})
+        const a = await User.findOneAndUpdate({username: myUser}, {$pull: {calendars: item._id}});
+        const b = await Calendar.deleteOne({_id: myId});
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/renameMyCalendar', async (req, res) => {
+    const {calKey, calNameEdit} = req.body
+    try{
+        await Calendar.findOneAndUpdate({_id: calKey}, {name: calNameEdit})
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
 router.post('/setDescriptionInventory', async (req, res) => {
     const {descriptionEditKey, descriptionEdit} = req.body
     try{

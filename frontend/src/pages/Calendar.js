@@ -19,6 +19,9 @@ const Calendar = () => {
     const [userCalendars, setUserCalendars] = useState([]);
     const [nameEdit, setNameEdit] = useState('');
     const [nameEditModalOpen, setNameEditModalOpen] = useState(false);
+    const [calNameEdit, setCalNameEdit] = useState('');
+    const [calNameEditModalOpen, setCalNameEditModalOpen] = useState(false);
+    const [calKey, setCalKey] = useState('')
 
     const user = useAuthContext()
 
@@ -103,6 +106,66 @@ const Calendar = () => {
         }
     }
 
+    const handleCalendarNameDelete = async (e) => {
+        const myId = e.currentTarget.value
+        console.log(myId)
+        const myUser = currentUser.username
+
+        const response = await fetch('/api/deleteMyCalendar', {
+            method: 'POST',
+            body: JSON.stringify({myId, myUser}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        const json = await response.json()
+
+        if(response.ok){
+            console.log(json)
+            window.location.reload()
+        }
+        else{
+            console.log(json.error)
+        }
+    }
+
+    const handleCalendarNameEdit = (e) => {
+        const myId = e.currentTarget.value
+
+        setCalNameEditModalOpen(true)
+        setCalKey(myId)
+     }
+
+     const calNameEditHandleClose = () => {
+        setCalNameEditModalOpen(false)
+        setCalNameEdit('')
+    }
+
+    const calNameEditHandleModalSubmit = async () => {
+        if(calKey !== '')
+        {
+            const response = await fetch('/api/renameMyCalendar', {
+                method: 'POST',
+                body: JSON.stringify({calKey, calNameEdit}),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            const json = await response.json()
+    
+            if(response.ok){
+                console.log(json)
+                setCalKey('')
+                window.location.reload()
+                calNameEditHandleClose()
+            }
+            else{
+                console.log(json.error)
+            }
+        }
+    }
+
+
     return(
         <>
         <Modal show={nameEditModalOpen} onHide={nameEditHandleClose} centered>
@@ -123,7 +186,25 @@ const Calendar = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-        {isLoad &&
+        <Modal show={calNameEditModalOpen} onHide={calNameEditHandleClose} centered>
+            <Modal.Header closeButton className='modalTitleTextSI'>
+                <Modal.Title className=''>Rename calendar</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body className='modalBodySI'>
+                <label className='modalInputBoxLabelSI'>Enter new name for calendar<input size={20} className='modalInputBoxSI' type='text' onChange={(e) => setCalNameEdit(e.target.value)} value={calNameEdit} required/></label>
+            </Modal.Body>
+
+            <Modal.Footer>
+                <Button variant="secondary" onClick={calNameEditHandleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={calNameEditHandleModalSubmit}>
+                    Submit
+                </Button>
+            </Modal.Footer>
+        </Modal>
+        {isLoad ? currentUser.priv === "Staff" ?
         <div className="calendarPageHolder">
             <Header atDashboard={true} isStaff={currentUser.priv}></Header>
             <div className="TabContentHolderCalendar">
@@ -150,8 +231,8 @@ const Calendar = () => {
                                 <div className='CalendarNameDiv' key={item._id} style={{paddingLeft:'10px', marginTop:'20px'}}>
                                     <input type="checkbox"/>
                                     <span style={{paddingLeft:'10px', fontSize:'large'}}>{item.name}</span>
-                                    <button style={{float:'right', backgroundColor:'transparent', border:'none'}}><img className="calendarNameEditDelIcon" src={deleteLogo} alt="Edit name"/></button>
-                                    <button style={{float:'right', backgroundColor:'transparent', border:'none'}}><img className="calendarNameEditDelIcon" src={editLogo} alt="Edit name"/></button>
+                                    <button value={item._id} onClick={handleCalendarNameDelete} style={{float:'right', backgroundColor:'transparent', border:'none'}}><img className="calendarNameEditDelIcon" src={deleteLogo} alt="Edit name"/></button>
+                                    <button value={item._id} onClick={handleCalendarNameEdit} style={{float:'right', backgroundColor:'transparent', border:'none'}}><img className="calendarNameEditDelIcon" src={editLogo} alt="Edit name"/></button>
                                 </div>
                             ))
 
@@ -186,7 +267,32 @@ const Calendar = () => {
                     />
                 </div>
             </div>
-        </div>}
+        </div>
+        :
+        <div className="calendarPageHolder">
+            <Header atDashboard={true} isStaff={currentUser.priv}></Header>
+            <div className="TabContentHolderCalendar">
+                <div className="ActualCalendarDisplay">
+                    <FullCalendar
+                        plugins={[ dayGridPlugin, timeGridPlugin ]}
+                        dayMaxEventRows={3}
+                        initialView="dayGridMonth"
+                        height={'100%'}
+                        headerToolbar={{
+                            left: 'today prev,next',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                        }}
+                        dateClick={ function(info) {
+                            alert('Clicked on: ' + info.dateStr)
+                            }
+                        }
+                        events={myEvents}
+                    />
+                </div>
+            </div>
+        </div>
+        : null}
         </>
     )
 }
