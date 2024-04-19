@@ -3,20 +3,24 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const routes = require('./Routes/routes')
+const cors = require('cors')
+
 
 //express app
 const app = express()
 
 //middleware
+//app.use(cors)
 app.use(express.json())
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
+    res.header({"Access-Control-Allow-Origin": "*"});
     next()
 })
 
 // routes
-app.use('/api/users', routes)
+app.use('/api', routes)
 
 //DB connection
 mongoose.connect(process.env.DB_URI)

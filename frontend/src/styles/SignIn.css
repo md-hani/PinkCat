@@ -1,0 +1,174 @@
+.mainDivSI{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.paneDivSI{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.leftPaneSI {
+  height: 100%;
+  background-color: #00458A;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.rightPaneSI {
+  height: 100%;
+  background-color: #CDAD5D;
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+row-gap: 35px;
+}
+
+.Welcomeback {
+  color: #CDAD5D;
+text-align: center;
+/*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+font-size: 55px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 2px;
+padding-top: 0px;
+}
+
+.inputBoxSI {
+  border-radius: 50px;
+  background: #D9D9D9;
+  resize: none;
+  outline-color: #CDAD5D;
+  border: 0;
+  font-size: x-large;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.inputAreaSI {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.inputBoxLabelSI {
+  color: #CDAD5D;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.0px;
+  display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+  /*row-gap: 6px;*/
+}
+
+.inputButtonSI {
+  border-radius: 10px;
+  background: #CDAD5D;
+  font-size: x-large;
+  color: #00458A;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 5px 60px 5px 60px;
+}
+
+.forgotPassSI {
+  text-align: center;
+  font-style: italic;
+}
+
+.forgotPassLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.forgotPassLink {
+  color: #cdad5dd3;
+  text-decoration: none;
+}
+
+.newHere{
+  color: #00458A;
+  text-align: center;
+  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+  font-size: 40px;
+  font-style: normal;
+  font-weight:600;
+  line-height: normal;
+  letter-spacing: 2px;
+  padding: 0px 50px 0px 50px;
+}
+
+.signinNavSI{
+  border-radius: 10px;
+  background: #00458A;
+  font-size: x-large;
+  font-weight: 600;
+  color: #CDAD5D;
+  padding: 5px 60px 5px 60px;
+  margin-left: 49px;
+  margin-right: 49px;
+}
+
+.modalBodySI {
+  margin-left: 10px;
+}
+
+.modalTitleTextSI {
+  color: black;
+}
+
+.modalInputBoxSI {
+  border-radius: 50px;
+  background: #FFFFFF;
+  resize: none;
+  outline-color: #CDAD5D;
+  border: 1;
+  font-size: x-large;
+  padding-left: 10px;
+  margin-top: 4px;
+}
+
+.modalInputBoxLabelSI {
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.0px;
+  display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+}
+
+.myAlertSI {
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+.SeePasswordImg {
+  width:5%;
+  position: absolute;
+  top:40px;
+  right:10px;
+  cursor: pointer;
+}
+

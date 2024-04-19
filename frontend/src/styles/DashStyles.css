@@ -1,0 +1,120 @@
+.studentHomeDash {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+.studentHomePaneHolder {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftPaneStudentHome {
+    display: flex;
+    width: 30%;
+    background-color: #8b8b81;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 40px 20px;
+    row-gap: 10px;
+}
+
+.rightPaneStudentHome {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.tabLinksHolder {
+    display: flex;
+    background-color: #cfcfbd;
+    width: 100%;
+    padding: 5px 15px 5px 10px;
+    justify-content: space-between;
+}
+
+.TabTextStudentHome {
+    color: black;
+    text-decoration: none;
+    padding: 5px 0px 5px 0px;
+    font-size: large;
+    font-weight: 500;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.settingsButtonDivStudentHome {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.StudentHomeTabTextWrap {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.StudentHomeTabTextWrap:hover {
+    background-color: #a3a395;
+}
+
+.profilePicStudentHome:hover .editImagePicStudentHome {
+    opacity: 1;
+}
+
+.profilePicStudentHome:hover {
+    opacity: 0.7;
+}
+
+.leftPaneTextStudentHomeName {
+    padding: 0px 0px 40px 0px;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.leftPaneTextStudentHome {
+    padding: 0px 0px 15px 0px;
+    display: flex;
+    align-self: flex-start;
+    font-size: large;
+}
+
+.settingsImgStudentHome {
+    width: 130%;
+}
+
+.SettingsButtonStudentHome {
+    background-color: transparent;
+    border: none;
+    margin-bottom: 3px;
+}
+
+.profilePicStudentHome {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editImagePicStudentHome {
+    position: absolute;
+    opacity: 0;
+}
+
+input[type=file] {
+    display: none;
+  }
+
+.TabContentHolder {
+    width: 100%;
+    height: 100%;
+}

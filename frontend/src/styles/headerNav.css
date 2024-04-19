@@ -1,0 +1,119 @@
+nav {
+    background-color: #002952; /* Background color of the header */
+    padding: 0px; /* Spacing inside the header */
+    display: flex;
+    width: 100%;
+  }
+
+  .logo {
+    display:flex;
+    width: 190px !important;
+    height: 100px !important;
+    padding: 10px 0px 10px 15px;
+  }
+
+  .headerLinks {
+    display: flex;
+    align-items: center;
+    margin-left: 35px;
+    width: 100%;
+  }
+
+  .meetTeamHeaderLinkNav {
+    text-decoration: none;
+    color: #CDAD5D;
+    font-weight: 700;
+    font-size: large;
+    margin-right: 35px;
+  }
+
+  .meetTeamHeaderLinkNav:hover {
+    text-decoration: underline;
+  }
+
+  .navBarLAN{
+    background-color: #002952; /* Background color of the header */
+    padding: 0px; /* Spacing inside the header */
+    display: flex;  
+  }
+  
+  .myButtonLAN {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    margin-right: 15px;
+  }
+
+  .signupLAN{
+    border-radius: 10px;
+    background: #CDAD5D;
+    font-size: large;
+    font-weight: 700;
+    color: #00458A;
+    padding: 5px 30px 5px 30px;
+  }
+
+  .logoutLAN {
+    border-radius: 10px;
+    background: #CDAD5D;
+    font-size: large;
+    font-weight: 700;
+    color: #00458A;
+    padding: 5px 30px 5px 30px;
+    margin-left: 25px;
+  }
+
+  .loginLAN{
+    font-size: large;
+    font-weight: 700;
+    color: #CDAD5D;
+    text-decoration: none;
+    margin-right: 25px;
+  }
+
+  .showUsernameNAV {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+    color:#CDAD5D;
+    font-size: large;
+    font-weight: 700;
+    margin-right: 25px;
+  }
+
+  .showUsernameNAV:hover .dropdownHeaderSelect{
+    visibility: visible;
+  }
+
+  .dropdownHeaderSelect {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    top: 100px;
+    right: 2px;
+    padding: 20px 10px 10px 0px;
+    z-index: 9999;
+    visibility: hidden;
+  }
+
+  .ProfilePicDropdownList {
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+
+  .HeaderDropdownProfilePicButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+  }
+
+  .settingsIconStyle {
+    padding: 5px;
+  }
+
+

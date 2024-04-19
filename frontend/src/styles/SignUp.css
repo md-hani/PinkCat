@@ -1,0 +1,148 @@
+  .mainDivSU{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .paneDiv{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .leftPane {
+    height: 100%;
+    background-color: #CDAD5D;
+    flex: 1;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 6px;
+  }
+  
+  .rightPane {
+    height: 100%;
+    background-color: #00458A;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 35px;
+  }
+  
+  .Welcometoamc {
+    color: #002952;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2px;
+  padding-top: 0px;
+  }
+  
+  .inputBox {
+    border-radius: 50px;
+    background: #D9D9D9;
+    resize: none;
+    outline-color: #00458A;
+    border: 0;
+    font-size: x-large;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+  .inputArea {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .inputBoxLabel {
+    color: #002952;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.0px;
+    display: flex;
+    align-items:flex-start;
+    flex-direction: column;
+    /*row-gap: 6px;*/
+  }
+
+  .checkboxLabel  {
+    color: #002952;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.0px;
+  }
+
+  .checkboxDiv {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .inputButton{
+    border-radius: 10px;
+    background: #00458A;
+    font-size: x-large;
+    color: #CDAD5D;
+    font-weight: 600;
+    padding: 5px 60px 5px 60px;
+}
+
+.alreadyMember{
+  color: #CDAD5D;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2px;
+  padding: 0px 50px 0px 50px;
+}
+
+.signinNav{
+  border-radius: 10px;
+    background: #CDAD5D;
+    font-size: x-large;
+    font-weight: 600;
+    color: #00458A;
+    padding: 5px 60px 5px 60px;
+}
+
+.extraInfo {
+  position: absolute;
+  color: #000;
+  background-color: #D9D9D9;
+  border-radius: 5px;
+  padding-top: 10px;
+  width: 70%;
+  left: -250px;
+  visibility: hidden;
+}
+
+.infoImgSignup img {
+  width: 15px;
+  position: absolute;
+  top: 8px;
+  left: 96px;
+}
+
+.infoImgSignup:hover .extraInfo{
+  visibility: visible;
+}
