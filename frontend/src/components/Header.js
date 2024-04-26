@@ -60,7 +60,11 @@ const Header = (props) => {
                 <a className='myLinkNav'href='/'><img className='logo' src={logo} alt="logo" /></a>
                 {!loading ? user?.user ? !props.atDashboard ? 
                 <div className='headerLinks'>
+                    {props.isStaff === "Staff" ? 
                     <a className='meetTeamHeaderLinkNav' href='/home'>DASHBOARD</a>
+                    :
+                    <a className='meetTeamHeaderLinkNav' href='/calendar'>DASHBOARD</a>
+                    }
                     <a className='meetTeamHeaderLinkNav' href='/meetteam'>MEET THE TEAM</a>
                     <a className='meetTeamHeaderLinkNav' href='/services'>OUR SERVICES</a>
                 </div> : 

@@ -31,7 +31,13 @@ export const useLogin = () => {
             dispatch({type: 'LOGIN', payload: json})
 
             setIsLoading(false)
-            window.location.href='/home'
+            if(json.priv === "Staff")
+            {
+                window.location.href='/home'
+            }
+            else{
+                window.location.href='/calendar'
+            }
         }
     }
 

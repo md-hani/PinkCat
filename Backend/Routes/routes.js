@@ -62,6 +62,23 @@ const transporter = nodemailer.createTransport({
     }
   })
 
+  router.post("/createHomeEvent",async (req, res) => {
+    const {eventTitle, startDate, endDate, colorSelectValue} = req.body
+    try{
+        const itemStaff = await Event.create({calendarId: '6605ae3b092f93d119c6228d', event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue, extendedProps: {id: '0'}}})
+        await Calendar.updateOne({_id: '6605ae3b092f93d119c6228d'}, {$push: {events: itemStaff._id}})
+        await Event.updateOne({_id: itemStaff._id}, {$set: {"event.extendedProps.id": itemStaff._id}})
+        
+        const itemStudent = await Event.create({calendarId: '662b90d7f3755367deecd329', event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue, extendedProps: {id: '0'}}})
+        await Calendar.updateOne({_id: '662b90d7f3755367deecd329'}, {$push: {events: itemStudent._id}})
+        await Event.updateOne({_id: itemStudent._id}, {$set: {"event.extendedProps.id": itemStudent._id}})
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+  })
+
   router.post("/editEvent",async (req, res) => {
     const {eventTitle, startDate, endDate, calendarSelectValue, colorSelectValue, eventId} = req.body
     try{
@@ -169,6 +186,25 @@ router.post('/getUserEvents', async (req, res) => {
                 }
             }
         }
+        console.log(eventArray)
+        res.status(200).json(eventArray)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/getStudentEvents', async (req, res) => {
+    const {calendars} = req.body
+    try{
+        var eventArray = []
+
+        const filter = {calendarId: '662b90d7f3755367deecd329'}
+
+        const item = await Event.find(filter)
+        for(let j = 0; j < item.length; j++){
+            eventArray.push(item[j])
+        }
+
         console.log(eventArray)
         res.status(200).json(eventArray)
     }catch(error){
@@ -286,7 +322,9 @@ router.post('/loginuser', async (req, res) => {
 
         const token = createToken(user._id)
 
-        res.status(200).json({username, token})
+        const priv = user.priv
+
+        res.status(200).json({username, token, priv})
     } catch(error){
         res.status(400).json({error: error.message})
     }

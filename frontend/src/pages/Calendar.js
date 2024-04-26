@@ -29,6 +29,7 @@ const Calendar = () => {
     const [isLoad, setIsLoad] = useState(false);
     const [userCalendars, setUserCalendars] = useState([]);
     const [userEvents, setUserEvents] = useState([]);
+    const [studentEvents, setStudentEvents] = useState([]);
     const [nameEdit, setNameEdit] = useState('');
     const [nameEditModalOpen, setNameEditModalOpen] = useState(false);
     const [calNameEdit, setCalNameEdit] = useState('');
@@ -46,6 +47,7 @@ const Calendar = () => {
     const user = useAuthContext()
 
     var eventUse = []
+    var studentEventUse = []
 
     const fetchData = async (username) => {
         const response = await fetch('/api/getcurrentuser', {
@@ -84,6 +86,18 @@ const Calendar = () => {
         console.log(json2)
         setUserEvents(json2)
 
+        const response3 = await fetch('/api/getStudentEvents', {
+            method: 'POST',
+            body: JSON.stringify({calendars}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+
+        const json3 = await response3.json()
+        console.log(json2)
+        setStudentEvents(json3)
+
         setIsLoad(true)
         setCurrentUser(json)
     }
@@ -98,6 +112,10 @@ const Calendar = () => {
         for(let i = 0; i < userEvents.length; i++)
         {
             eventUse.push(userEvents[i].event)
+        }
+        for(let i = 0; i < studentEvents.length; i++)
+        {
+            studentEventUse.push(studentEvents[i].event)
         }
     }
 
@@ -586,7 +604,7 @@ const Calendar = () => {
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay'
                         }}
-                        events={eventUse}
+                        events={studentEventUse}
                     />
                 </div>
             </div>
