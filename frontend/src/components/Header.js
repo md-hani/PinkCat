@@ -65,7 +65,9 @@ const Header = (props) => {
                     <a className='meetTeamHeaderLinkNav' href='/services'>OUR SERVICES</a>
                 </div> : 
                 <div className='headerLinks'>
+                    {props.isStaff === "Staff" ? 
                     <a className='meetTeamHeaderLinkNav' href='/home'>HOME</a>
+                    : null}
                     <a className='meetTeamHeaderLinkNav' href='/calendar'>CALENDAR</a>
                     <a className='meetTeamHeaderLinkNav' href='/inventory'>INVENTORY</a>
                 </div> :

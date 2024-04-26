@@ -3,6 +3,7 @@ import RoundedImage from 'react-rounded-image';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useState, useEffect, useRef } from "react";
 import editImage from '../assets/editImage.png'
+import Card from "react-bootstrap/Card"
 
 const Home = () => {
     const [currentUser, setCurrentUser] = useState('');
@@ -63,9 +64,14 @@ const Home = () => {
         }
     }
 
+    const checkoutClick = (e) => {
+        alert("Hello")
+    }
+
     return (
         <>
-        {isLoad ? <div className="studentHomeDash">
+        {isLoad ? currentUser.priv === "Staff" ?
+        <div className="studentHomeDash">
             <Header atDashboard={true} isStaff={currentUser.priv}></Header>
             <div className="studentHomePaneHolder">
                 <div className="leftPaneStudentHome">
@@ -79,9 +85,33 @@ const Home = () => {
                     <span className='leftPaneTextStudentHome'>Next Appointment: TBD</span>
                 </div>
                 <div className="rightPaneStudentHome">
+                    <div style={{height: "100%", width: "50%"}}>
+                        <Card bg="secondary" onClick={checkoutClick} style={{width: "92%", height: "45%", margin: "20px", cursor: "pointer"}}>
+                            <Card.Body style={{fontSize: "larger", color: "white"}}>
+                                <Card.Title style={{fontSize: "xxx-large"}}>Checkout Form</Card.Title><br/>
+                                Fill out this form when an item has to be checked out for a student.
+                            </Card.Body>
+                        </Card>
+                        <Card bg="secondary" onClick={checkoutClick} style={{width: "92%", height: "45%", margin: "20px", cursor: "pointer"}}>
+                            <Card.Body style={{fontSize: "larger", color: "white"}}>
+                                <Card.Title style={{fontSize: "xxx-large"}}>Create Event Form</Card.Title><br/>
+                                Fill out this form to add an event to  be viewed on Staff and Student Calendars. 
+                                It can also be used to add to carousel on landing page.
+                            </Card.Body>
+                        </Card>
+                    </div>
+                    <div style={{height: "100%", width: "50%"}}>
+                        <Card bg="secondary" onClick={checkoutClick} style={{width: "92%", height: "45%", margin: "20px", cursor: "pointer"}}>
+                            <Card.Body style={{fontSize: "larger", color: "white"}}>
+                                <Card.Title style={{fontSize: "xxx-large"}}>Return Form</Card.Title><br/>
+                                Fill out this form when an item has been returned by a student.
+                            </Card.Body>
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div> : null}
+        </div> :null
+        : null}
         </>
     )
 }

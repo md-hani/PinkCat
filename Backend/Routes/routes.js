@@ -52,10 +52,36 @@ const transporter = nodemailer.createTransport({
   router.post("/createEvent",async (req, res) => {
     const {eventTitle, startDate, endDate, calendarSelectValue, colorSelectValue} = req.body
     try{
-        const item = await Event.create({calendarId: calendarSelectValue, event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue}})
+        const item = await Event.create({calendarId: calendarSelectValue, event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue, extendedProps: {id: '0'}}})
         await Calendar.updateOne({_id: calendarSelectValue}, {$push: {events: item._id}})
+        await Event.updateOne({_id: item._id}, {$set: {"event.extendedProps.id": item._id}})
 
-        console.log(item)
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+  })
+
+  router.post("/editEvent",async (req, res) => {
+    const {eventTitle, startDate, endDate, calendarSelectValue, colorSelectValue, eventId} = req.body
+    try{
+        const item = await Event.findById(eventId)
+        await Calendar.updateOne({_id: item.calendarId}, {$pull: {events: item._id}})
+        await Calendar.updateOne({_id: calendarSelectValue}, {$push: {events: item._id}})
+        await Event.findOneAndUpdate({_id: item._id}, {calendarId: calendarSelectValue, event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue, extendedProps: {id: eventId}}})
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+  })
+
+  router.post("/deleteEvent",async (req, res) => {
+    const {eventId} = req.body
+    try{
+        const item = await Event.findById(eventId)
+        await Calendar.updateOne({_id: item.calendarId}, {$pull: {events: item._id}})
+        await Event.deleteOne({_id: eventId})
 
         res.status(200).json('its good')
     }catch(error){

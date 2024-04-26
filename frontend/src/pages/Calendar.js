@@ -18,6 +18,11 @@ import { toast } from 'react-toastify';
 import editLogo from '../assets/editImage.png'
 import deleteLogo from '../assets/deleteIcon.png'
 import dayjs from "dayjs";
+var utc = require('dayjs/plugin/utc')
+var timezone = require('dayjs/plugin/timezone') // dependent on utc plugin
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const Calendar = () => {
     const [currentUser, setCurrentUser] = useState('');
@@ -29,12 +34,14 @@ const Calendar = () => {
     const [calNameEdit, setCalNameEdit] = useState('');
     const [calNameEditModalOpen, setCalNameEditModalOpen] = useState(false);
     const [eventCreateModalOpen ,setEventCreateModalOpen] = useState(false);
+    const [eventEditModalOpen ,setEventEditModalOpen] = useState(false);
     const [eventTitle,setEventTitle] = useState('');
     const [calKey, setCalKey] = useState('')
     const [eventStartDateValue, setEventStartDateValue] = useState(null);
     const [eventEndDateValue, setEventEndDateValue] = useState(null);
     const [calendarSelectValue, setCalendarSelectValue] = useState('6605ae3b092f93d119c6228d');
     const [colorSelectValue, setColorSelectValue] = useState("Red");
+    const [eventId, setEventId] = useState("");
 
     const user = useAuthContext()
 
@@ -211,6 +218,7 @@ const Calendar = () => {
             toast.error('Event end is before event start', {position: "bottom-left"});
         }
         else{
+            console.log(eventStartDateValue)
             const startDate = eventStartDateValue.format('YYYY-MM-DDTHH:mm')
             const endDate = eventEndDateValue.format('YYYY-MM-DDTHH:mm')
             const response = await fetch('/api/createEvent', {
@@ -230,6 +238,65 @@ const Calendar = () => {
             else{
                 console.log(json.error)
             }
+        }
+    }
+
+    const eventEditHandleClose = () => {
+        setEventEditModalOpen(false)
+        setEventTitle('')
+        setEventStartDateValue(null)
+        setEventEndDateValue(null)
+    }
+
+    const eventEditHandleModalSubmit = async () => {
+
+        if(eventTitle === '' || eventStartDateValue === null || eventEndDateValue === null)
+        {
+            toast.error('Please fill all the fields', {position: "bottom-left"});
+        }
+        else if ((eventStartDateValue > eventEndDateValue)){
+            toast.error('Event end is before event start', {position: "bottom-left"});
+        }
+        else{
+            const startDate = eventStartDateValue.format('YYYY-MM-DDTHH:mm')
+            const endDate = eventEndDateValue.format('YYYY-MM-DDTHH:mm')
+            const response = await fetch('/api/editEvent', {
+                method: 'POST',
+                body: JSON.stringify({eventTitle, startDate, endDate, calendarSelectValue, colorSelectValue, eventId}),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            const json = await response.json()
+    
+            if(response.ok){
+                console.log(json)
+                window.location.reload()
+                eventEditHandleClose()
+            }
+            else{
+                console.log(json.error)
+            }
+        }
+    }
+
+    const eventEditHandleDelete = async () => {
+        const response = await fetch('/api/deleteEvent', {
+            method: 'POST',
+            body: JSON.stringify({eventId}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        const json = await response.json()
+
+        if(response.ok){
+            console.log(json)
+            window.location.reload()
+            eventEditHandleClose()
+        }
+        else{
+            console.log(json.error)
         }
     }
 
@@ -331,6 +398,72 @@ const Calendar = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
+        <Modal show={eventEditModalOpen} onHide={eventEditHandleClose} centered>
+            <Modal.Header closeButton className='modalTitleTextSI'>
+                <Modal.Title className=''>Edit/Delete Event</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body className='modalBodySI'>
+                <label className='modalInputBoxLabelSI'>Enter Title<input size={20} className='modalInputBoxSI' type='text' onChange={(e) => setEventTitle(e.target.value)} value={eventTitle} required/></label>
+                <div style={{display: "flex", flexDirection: "row", flex: 1}}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker 
+                            label="Select Event Start" 
+                            value={eventStartDateValue}
+                            onChange={(newValue) => {setEventStartDateValue(newValue)}}
+                            viewRenderers={{
+                                hours: renderTimeViewClock,
+                                minutes: renderTimeViewClock,
+                                seconds: renderTimeViewClock,
+                            }}
+                            />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} >
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker 
+                            label="Select Event End" 
+                            value={eventEndDateValue}
+                            onChange={function(newValue) {
+                                setEventEndDateValue(newValue)}}
+                            viewRenderers={{
+                                hours: renderTimeViewClock,
+                                minutes: renderTimeViewClock,
+                                seconds: renderTimeViewClock,
+                            }}
+                            />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                </div>
+                <label className='modalInputBoxLabelCalendar'> Select Color
+                    <select className="dropdownBoxCalendarSelect" onChange={HandleColorSelectChange} value={colorSelectValue}>
+                        <option value="Red">Red</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Pink">Pink</option>
+                    </select>
+                </label>
+                <label className='modalInputBoxLabelCalendar'> Select Calendar
+                    <select className="dropdownBoxCalendarSelect" onChange={HandleCalendarSelectChange} value={calendarSelectValue}>
+                            {isLoad && userCalendars.map(item => (
+                                <option key={item._id} value={item._id}>{item.name}</option>
+                            ))}
+                    </select>
+                </label>
+            </Modal.Body>
+
+            <Modal.Footer>
+                <Button variant="danger" onClick={eventEditHandleDelete}>
+                    Delete
+                </Button>
+                <Button variant="primary" onClick={eventEditHandleModalSubmit}>
+                    Edit
+                </Button>
+            </Modal.Footer>
+        </Modal>
         <Modal show={nameEditModalOpen} onHide={nameEditHandleClose} centered>
             <Modal.Header closeButton className='modalTitleTextSI'>
                 <Modal.Title className=''>Create new calendar</Modal.Title>
@@ -421,11 +554,19 @@ const Calendar = () => {
                             }
                         }}
                         dateClick={ function(info) {
-                            setEventStartDateValue(dayjs(info.dateStr))
+                            setEventStartDateValue(dayjs(info.date))
                             setEventCreateModalOpen(true)
                             }
                         }
                         events={eventUse}
+                        eventClick={ function(info) {
+                            setEventEditModalOpen(true)
+                            setEventTitle(info.event._def.title)
+                            setEventId(info.event._def.extendedProps.id)
+                            setEventStartDateValue(dayjs(info.event._instance.range.start).utc())
+                            setEventEndDateValue(dayjs(info.event._instance.range.end).utc()) 
+                            console.log(info.event)
+                        }}
                     />
                 </div>
             </div>
@@ -445,10 +586,6 @@ const Calendar = () => {
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay'
                         }}
-                        dateClick={ function(info) {
-                            alert('Clicked on: ' + info.dateStr)
-                            }
-                        }
                         events={eventUse}
                     />
                 </div>
