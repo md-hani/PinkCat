@@ -15,7 +15,7 @@ nav {
   .headerLinks {
     display: flex;
     align-items: center;
-    margin-left: 35px;
+    margin-left: 50px;
     width: 100%;
   }
 
@@ -24,7 +24,7 @@ nav {
     color: #CDAD5D;
     font-weight: 700;
     font-size: large;
-    margin-right: 35px;
+    margin-right: 80px;
   }
 
   .meetTeamHeaderLinkNav:hover {
