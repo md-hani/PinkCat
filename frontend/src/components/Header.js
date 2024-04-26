@@ -68,11 +68,6 @@ const Header = (props) => {
                     <a className='meetTeamHeaderLinkNav' href='/home'>HOME</a>
                     <a className='meetTeamHeaderLinkNav' href='/calendar'>CALENDAR</a>
                     <a className='meetTeamHeaderLinkNav' href='/inventory'>INVENTORY</a>
-                    <div>
-                        {props.isStaff === "Staff" ? 
-                            <a className='meetTeamHeaderLinkNav' href='/analytics'>ANALYTICS</a> : null
-                        }
-                    </div>
                 </div> :
                 <div className='headerLinks'>
                     <a className='meetTeamHeaderLinkNav' href='/meetteam'>MEET THE TEAM</a>
@@ -85,11 +80,9 @@ const Header = (props) => {
                     <Link to='/signup'><button className='signupLAN' type='button'>SIGN UP</button></Link>
                 </div> :
                 <div className='showUsernameNAV'>
-                    <Link to='/'>
-                        <div className='testRel'>
-                            <RoundedImage imageWidth='65' imageHeight='65' roundedColor='#CDAD5D' roundedSize='7' image={getImage()}/>
-                        </div>
-                    </Link>
+                    <div className='testRel'>
+                        <RoundedImage imageWidth='65' imageHeight='65' roundedColor='#CDAD5D' roundedSize='7' image={getImage()}/>
+                    </div>
                     <div className='dropdownHeaderSelect'>
                         <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleProfileSettingsClick}><img className='settingsIconStyle' src={settingsIcon} alt='Settings'/>Profile settings</button></li>
                         <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleLogOut}><img className='settingsIconStyle' src={logoutIcon} alt='Log out'/>Log out</button></li>

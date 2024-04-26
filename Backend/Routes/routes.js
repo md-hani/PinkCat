@@ -3,6 +3,7 @@ const User = require('../Models/userModel')
 const StaffBio = require('../Models/staffBioModel')
 const Inventory = require('../Models/inventoryModel')
 const Calendar = require('../Models/calendarModel')
+const Event = require("../Models/eventModel")
 const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer");
 const xlsx = require('xlsx')
@@ -49,8 +50,23 @@ const transporter = nodemailer.createTransport({
   });
 
   router.post("/createEvent",async (req, res) => {
+    const {eventTitle, startDate, endDate, calendarSelectValue, colorSelectValue} = req.body
     try{
-        const item = await Calendar.updateOne({_id: '6605ae3b092f93d119c6228d'}, {$push: {events: {title: 'Event 1', start: '2024-03-18T18:30', end: '2024-03-18T20:30'}}})
+        const item = await Event.create({calendarId: calendarSelectValue, event: {title: eventTitle, start: startDate, end: endDate, color: colorSelectValue}})
+        await Calendar.updateOne({_id: calendarSelectValue}, {$push: {events: item._id}})
+
+        console.log(item)
+
+        res.status(200).json('its good')
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+  })
+
+  router.post("/toggleCalendar",async (req, res) => {
+    const {idValue, enabledValue} = req.body
+    try{
+        const item = await Calendar.updateOne({_id: idValue}, {enabled: enabledValue})
 
         res.status(200).json('its good')
     }catch(error){
@@ -103,6 +119,32 @@ router.post('/getUserCalendars', async (req, res) => {
         }
         console.log(calArray)
         res.status(200).json(calArray)
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/getUserEvents', async (req, res) => {
+    const {calendars} = req.body
+    try{
+        var eventArray = []
+
+        for(let i = 0; i < calendars.length; i++)
+        {
+            const filter = {calendarId: calendars[i]}
+            const enableCheck = await Calendar.findOne({_id: calendars[i]})
+            console.log("1", enableCheck.enabled)
+            if(enableCheck.enabled)
+            {
+                const item = await Event.find(filter)
+                console.log(item)
+                for(let j = 0; j < item.length; j++){
+                    eventArray.push(item[j])
+                }
+            }
+        }
+        console.log(eventArray)
+        res.status(200).json(eventArray)
     }catch(error){
         res.status(400).json({error: error.message})
     }
