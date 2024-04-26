@@ -169,6 +169,7 @@ router.post('/deleteMyCalendar', async (req, res) =>{
     try{
         const item = await Calendar.findOne({_id: myId})
         const a = await User.findOneAndUpdate({username: myUser}, {$pull: {calendars: item._id}});
+        await Event.deleteMany({calendarId: myId})
         const b = await Calendar.deleteOne({_id: myId});
 
         res.status(200).json('its good')
