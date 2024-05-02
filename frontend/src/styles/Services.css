@@ -93,7 +93,7 @@
 }
 
 .researchDscrptServ {
-    display:flex;
+    display: block;
     font-size: larger;
     font-weight: 500;
     padding: 10px 10px 10px 10px;

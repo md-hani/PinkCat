@@ -46,7 +46,7 @@ const Services = () => {
                             <div className = 'AVImgServ'/><img className='lBoardServ' src={lBoard} alt="lBoard" /> 
                             <div className = 'AVTextServ'>               
                                 <h2 className='AVHeadServe'>Video & Audio Production</h2>
-                                <span className='AVDscrptServ'>livestream-7 Things You Should Know. Our lightboard allows you to record an interactive presentation 
+                                <span className='AVDscrptServ'>Things You Should Know. Our lightboard allows you to record an interactive presentation 
                                                             while showing your face to your audience. You can write in front of you on the glass board and the 
                                                             image will be mirrored on film so that your audience is able to read what you write. In addition, 
                                                             there is a greenscreen behind the board, giving you full control of your background. You also have 
@@ -64,14 +64,10 @@ const Services = () => {
                                 <span className='researchDscrptServ'>Everyone likes, “FREE.” When your poster is part of sponsored “Academic Research”, your poster
                                                                     should be free. Please check with your sponsor to see if you project qualifies. Other poster 
                                                                     printing is $50 per poster. Bring PDF of your poster to the Academic Media Center in the 
-                                                                    Learning Commons on a flash drive/memory stick. You can find the template for the Research 
-                                                                    Symposium poster under https://gateway.stmarytx.edu/group/mycampus/services/student-research-
-                                                                    and-inquiry. ATS Research Partner: Office of Student Research and Inquiry Melissa Karlin, Ph. D. 
-                                                                    Office of Student Research and Inquiry Director Garni Science Hall, Room 203210-436-3233
-                                                                    osri@stmarytx.edu For more information or to schedule a session appointment, please contact 
-                                                                    Director, Jacqueline Flores (jflores96@stmarytx.edu), Media Specialist, Anna Davila 
-                                                                    (adavila25@stmarytx.edu) or Media Specialist, Liza Sánchez (lsanchez@stmarytx.edu) at our 
-                                                                    direct line: 210-436-3503. maybe carousel, LIvestream</span>
+                                                                    Learning Commons on a flash drive/memory stick. ATS Research Partner: Office of Student Research and Inquiry Melissa Karlin, Ph. D. 
+                                                                    Office of Student Research and Inquiry Director, Garni Science Hall, Room 203. For more information or to schedule a session appointment, please contact 
+                                                                    Director, <a href="mailto:jflores96@stmarytx.edu">Jacqueline Flores</a>, Media Specialist, <a href="mailto:adavila25@stmarytx.edu">Anna Davila</a> or Media Specialist, <a href="mailto:lsanchez@stmarytx.edu">Liza Sánchez</a> at our 
+                                                                    direct line: 210-436-3503.</span>
                             </div>
                         </div>
             </div>
