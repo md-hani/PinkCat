@@ -3,32 +3,20 @@ import React from 'react'
 import dslr from '../assets/dslr.png'
 import lBoard from '../assets/Aktunc.png'
 import poster from '../assets/posters.jpg'
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const Services = () => {
-    const [bios, setBios] = React.useState('');
-    const [isLoad, setIsLoad] = React.useState(false);
 
-    const fetchData = async () => {
-        const response = await fetch('/api/getallbios', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                })
-                const json = await response.json()
-                setIsLoad(true)
-                setBios(json)
-    }
+const Services = () => {    
+    const user = useAuthContext()
 
     React.useEffect(() => {
-        fetchData()
+
     }, [])
 
     return(
         <>
             <div className="mainDivServ">
-                {isLoad && 
-                <Header atDashboard={false}></Header>}
+                <Header atDashboard={false} isStaff={user?.user?.priv}></Header>
                         <h1 className='serveHeadServ'>Our Services</h1>
                         <span className='headerDescrptServ'>The Academic Media Center is focused on helping students, faculty and staff with the design, 
                                                             development and production of multimedia in support of the curriculum and St. Mary's University's 

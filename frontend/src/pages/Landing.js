@@ -5,6 +5,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import RoundedImage from 'react-rounded-image';
 import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Landing = () =>
 {
@@ -22,6 +23,8 @@ const Landing = () =>
                 setIsLoad(true)
                 setBios(json)
     }
+
+    const user = useAuthContext()
 
     React.useEffect(() => {
         fetchData()
@@ -41,7 +44,7 @@ const Landing = () =>
         <>
         {isLoad &&
         <div className="landing">
-            <Header atDashboard={false}></Header>
+            <Header atDashboard={false} isStaff={user?.user?.priv}></Header>
             <span className='eventsTextLAN'>EVENTS</span>
             <div className='swiperDiv'>
                 <Swiper

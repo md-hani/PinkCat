@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import React from 'react'
 import RoundedImage from 'react-rounded-image';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const MeetTeam = () => {
     const [bios, setBios] = React.useState('');
@@ -17,6 +18,8 @@ const MeetTeam = () => {
                 setIsLoad(true)
                 setBios(json)
     }
+
+    const user = useAuthContext()
 
     React.useEffect(() => {
         fetchData()
@@ -36,7 +39,7 @@ const MeetTeam = () => {
         <>
             <div className="mainDivMT">
                 {isLoad &&
-                <Header atDashboard={false}></Header>} 
+                <Header atDashboard={false} isStaff={user?.user?.priv}></Header>} 
                 {isLoad && bios.map(item => (
                     <div key={item._id} id={item.name} className='bioDivMT'>
                         <div className='leftPaneMT'>
