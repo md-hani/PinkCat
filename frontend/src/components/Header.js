@@ -90,7 +90,7 @@ const Header = (props) => {
                         <RoundedImage imageWidth='65' imageHeight='65' roundedColor='#CDAD5D' roundedSize='7' image={getImage()}/>
                     </div>
                     <div className='dropdownHeaderSelect'>
-                        <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleProfileSettingsClick}><img className='settingsIconStyle' src={settingsIcon} alt='Settings'/>Profile settings</button></li>
+                        {/* <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleProfileSettingsClick}><img className='settingsIconStyle' src={settingsIcon} alt='Settings'/>Profile settings</button></li> */}
                         <li className='ProfilePicDropdownList'><button className='HeaderDropdownProfilePicButton' onClick={handleLogOut}><img className='settingsIconStyle' src={logoutIcon} alt='Log out'/>Log out</button></li>
                     </div>
                 </div>): null}

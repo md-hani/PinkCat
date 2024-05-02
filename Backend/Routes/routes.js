@@ -363,6 +363,28 @@ router.post('/getTableData', async (req, res) => {
     }
 })
 
+router.post('/returnItem', async (req, res) => {
+    const {selectValue} = req.body
+    try{
+        await Inventory.findOneAndUpdate({_id: selectValue}, {checkOut: '-', returnTime: '-', available: true})
+
+        res.status(200).json("It's Good")
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.post('/checkoutItem', async (req, res) => {
+    const {checkoutDate, returnDate, selectValue} = req.body
+    try{
+        await Inventory.findOneAndUpdate({_id: selectValue}, {checkOut: checkoutDate, returnTime: returnDate, available: false})
+
+        res.status(200).json("It's Good")
+    }catch(error){
+        res.status(400).json({error: error.message})
+    }
+})
+
 router.post('/profileimage', upload.single("file"), async (req, res) => {
     try{
         const username = (JSON.parse(JSON.stringify(req.body)).data)

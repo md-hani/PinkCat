@@ -39,7 +39,7 @@ const Landing = () =>
 
     return (
         <>
-        {isLoad && 
+        {isLoad &&
         <div className="landing">
             <Header atDashboard={false}></Header>
             <span className='eventsTextLAN'>EVENTS</span>
